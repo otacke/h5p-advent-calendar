@@ -1,0 +1,40 @@
+/** Class for utility functions */
+class Util {
+  /**
+   * Extend an array just like JQuery's extend.
+   * @param {object} arguments Objects to be merged.
+   * @return {object} Merged objects.
+   */
+  static extend() {
+    for (let i = 1; i < arguments.length; i++) {
+      for (let key in arguments[i]) {
+        if (arguments[i].hasOwnProperty(key)) {
+          if (typeof arguments[0][key] === 'object' && typeof arguments[i][key] === 'object') {
+            this.extend(arguments[0][key], arguments[i][key]);
+          }
+          else {
+            arguments[0][key] = arguments[i][key];
+          }
+        }
+      }
+    }
+    return arguments[0];
+  }
+
+  /**
+   * Shuffle array.
+   * @param {object[]} array Array.
+   * @return {object[]} Shuffled array.
+   */
+  static shuffleArray(array) {
+    let j, x, i;
+    for (i = array.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = array[i];
+      array[i] = array[j];
+      array[j] = x;
+    }
+  }
+}
+
+export default Util;
