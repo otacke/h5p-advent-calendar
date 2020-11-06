@@ -1,0 +1,145 @@
+{
+  "semantics": [
+    {
+      "label": "Doors",
+      "entity": "door",
+      "field": {
+        "fields": [
+          {
+            "label": "Door image",
+            "description": "Image that will be used for the door. Need to have a size ratio of 1:1 if you want the the left half fit the right half."
+          },
+          {
+            "label": "Background image",
+            "description": "Image that should appear inside the door. Will be the door's number by default."
+          },
+          {
+            "label": "Content type",
+            "description": "Content type that shoud optionally pop up when the door is opened.",
+            "options": [
+              {
+                "label": "Audio"
+              },
+              {
+                "label": "Image"
+              },
+              {
+                "label": "Link"
+              },
+              {
+                "label": "Text"
+              },
+              {
+                "label": "Video"
+              }
+            ]
+          },
+          {
+            "label": "Audio",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          },
+          {
+            "label": "Image",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          },
+          {
+            "label": "Link",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          },
+          {
+            "label": "Text",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          },
+          {
+            "label": "Video",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          }
+        ]
+      },
+      "widgets": [
+        {
+          "label": "Default"
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "fields": [
+        {
+          "label": "Calendar background image"
+        },
+        {
+          "label": "Background music"
+        },
+        {
+          "label": "Autoplay background music"
+        },
+        {
+          "label": "Let it snow"
+        },
+        {
+          "label": "Hide door border"
+        },
+        {
+          "label": "Hide door numbers"
+        },
+        {
+          "label": "Hide door knobs"
+        },
+        {
+          "label": "Hide door frame"
+        },
+        {
+          "label": "Random order",
+          "description": "Shuffle the order of the doors. If the save content state option is set in the H5P settings, that order will stay the same when the user returns later."
+        },
+        {
+          "label": "Keep order of images",
+          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Design mode",
+          "description": "When in design mode, all door can be opened."
+        }
+      ]
+    },
+    {
+      "label": "Localize",
+      "fields": [
+        {
+          "label": "Mute audio",
+          "default": "Mute audio"
+        },
+        {
+          "label": "Unmute audio",
+          "default": "Unmute audio"
+        }
+      ]
+    }
+  ]
+}
