@@ -84,6 +84,7 @@
     },
     {
       "label": "Verhaltenseinstellungen",
+      "description": "Diese Optionen legen fest, wie der Kalender im Detail funktioniert.",
       "fields": [
         {
           "label": "Hintergrundbild für den Kalender"
