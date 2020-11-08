@@ -14,7 +14,7 @@
           "name": "doorCover",
           "type": "image",
           "label": "Door image",
-          "description": "Image that will be used for the door. Need to have a size ratio of 1:1 if you want the the left half fit the right half."
+          "description": "Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the the left half fit the right half."
         },
         {
           "name": "previewImage",
@@ -159,6 +159,7 @@
         "name": "autoplay",
         "type": "boolean",
         "label": "Autoplay background music",
+        "description": "If set, the background music will play automatically once the content is opened. Please note: Some browsers' media policy may prevent autoplay.",
         "default": false,
         "optional": true
       },
@@ -166,6 +167,7 @@
         "name": "snow",
         "type": "boolean",
         "label": "Let it snow",
+        "description": "Will add some snow falling in front of the calendar.",
         "default": false,
         "optional": true
       },
@@ -201,7 +203,7 @@
         "name": "randomize",
         "type": "boolean",
         "label": "Random order",
-        "description": "Shuffle the order of the doors. If the save content state option is set in the H5P settings, that order will stay the same when the user returns later.",
+        "description": "Shuffle the order of the doors. If the \"save content state\" option is set in the H5P settings, that order will stay the same when the user returns later.",
         "default": false,
         "optional": true
       },
@@ -226,7 +228,7 @@
         "name": "designMode",
         "type": "boolean",
         "label": "Design mode",
-        "description": "When in design mode, all door can be opened.",
+        "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number.",
         "default": true,
         "optional": true
       }
