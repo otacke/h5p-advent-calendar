@@ -254,6 +254,13 @@
         "label": "Unmute audio",
         "importance": "low",
         "default": "Unmute audio"
+      },
+      {
+        "name": "closeWindow",
+        "type": "text",
+        "label": "Close window",
+        "importance": "low",
+        "default": "Close window"
       }
     ]
   }

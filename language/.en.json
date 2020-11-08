@@ -140,6 +140,10 @@
         {
           "label": "Unmute audio",
           "default": "Unmute audio"
+        },
+        {
+          "label": "Close window",
+          "default": "Close window"
         }
       ]
     }
