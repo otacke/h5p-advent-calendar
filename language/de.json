@@ -1,0 +1,151 @@
+{
+  "semantics": [
+    {
+      "label": "Türchen",
+      "entity": "Türchen",
+      "field": {
+        "fields": [
+          {
+            "label": "Bild für das Türchen",
+            "description": "Bild, das für die Tür verwendet wird. Benötigt ein Seitenverhältnis von 1:1, wenn die linke Hälfte zur rechten Hälfte passen soll."
+          },
+          {
+            "label": "Hintergrundbild",
+            "description": "Bild, das hinter dem Türchen erscheinen soll. Ohne Bild wird die Nummer des Türchens angezeigt."
+          },
+          {
+            "label": "Inhaltstyp",
+            "description": "Inhaltstyp, der optional erscheinen soll, wenn das Türchen geöffnet wurde.",
+            "options": [
+              {
+                "label": "Tondatei"
+              },
+              {
+                "label": "Bild"
+              },
+              {
+                "label": "Link"
+              },
+              {
+                "label": "Text"
+              },
+              {
+                "label": "Video"
+              }
+            ]
+          },
+          {
+            "label": "Tondatei",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          },
+          {
+            "label": "Bild",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          },
+          {
+            "label": "Link",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          },
+          {
+            "label": "Text",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          },
+          {
+            "label": "Video",
+            "showWhen": {
+              "rules": [
+                {}
+              ]
+            }
+          }
+        ]
+      },
+      "widgets": [
+        {
+          "label": "Vorgabe"
+        }
+      ]
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "fields": [
+        {
+          "label": "Hintergrundbild für den Kalender"
+        },
+        {
+          "label": "Hintergrundmusik"
+        },
+        {
+          "label": "Hintergrundmusik automatisch abspielen",
+          "description": "Wenn angewählt, wird die Hintergrundmusik automatisch abgespielt, wenn der Inhalt aufgerufen wird. Hinweis: Die Regeln einiger Browser verhindern möglicherweise das automatische Abspielen."
+        },
+        {
+          "label": "Lass es schnei'n",
+          "description": "Fügt dem Kalender etwas Schnee hinzu."
+        },
+        {
+          "label": "Verstecke den Rahmen der Türchen"
+        },
+        {
+          "label": "Verstecke die Nummern der Türchen"
+        },
+        {
+          "label": "Verstecke die Griffe der Türchen"
+        },
+        {
+          "label": "Verstecke Rand der Türchen"
+        },
+        {
+          "label": "Zufällige Reihenfolge",
+          "description": "Mische die Reihenfolge der Türchen. Falls die \"save content state\"-Option in den H5P-Einstellungen aktiviert wurde, bleibt die Reihenfolge erhalten, wenn Nutzer:innen später zurückkehren."
+        },
+        {
+          "label": "Bilderreihenfolge beibehalten",
+          "description": "Mische die Türchen, aber behalte deren Deckbilder an ihrer eigentlichen Position beginnend bei 1 in der Ecke links oben bis hinunter zur 24 in der Ecke rechts unten.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Designmodus",
+          "description": "Wenn der Designmodus aktiv ist, können alle Türchen geöffnet werden. Andernfalls können die Türchen nur im Dezember an oder nach dem Tag geöffnet werden, der der Türchennummer entspricht."
+        }
+      ]
+    },
+    {
+      "label": "Sprache anpassen",
+      "fields": [
+        {
+          "label": "Ton stummschalten",
+          "default": "Ton stummschalten"
+        },
+        {
+          "label": "Ton einschalten",
+          "default": "Ton einschalten"
+        },
+        {
+          "label": "Fenster schließen",
+          "default": "Fenster schließen"
+        }
+      ]
+    }
+  ]
+}
