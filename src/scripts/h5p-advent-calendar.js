@@ -27,6 +27,11 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         closeWindow: 'Close window',
         mute: 'Mute audio',
         unmute: 'Unmute audio'
+      },
+      a11y: {
+        door: 'Door',
+        locked: 'Locked. It is not time to open this one yet.',
+        content: 'Content of @door'
       }
     }, params);
 
@@ -101,7 +106,12 @@ export default class AdventCalendar extends H5P.EventDispatcher {
           hideNumbers: params.behaviour.hideNumbers,
           hideDoorKnobs: params.behaviour.hideDoorKnobs,
           hideDoorFrame: params.behaviour.hideDoorFrame,
-          designMode: params.behaviour.designMode
+          designMode: params.behaviour.designMode,
+          a11y: {
+            door: this.params.a11y.door,
+            locked: this.params.a11y.locked,
+            content: this.params.a11y.content,
+          }
         },
         {
           onOpened: (day, delay) => {

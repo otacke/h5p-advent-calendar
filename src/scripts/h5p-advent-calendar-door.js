@@ -24,6 +24,13 @@ export default class AdventCalendarDoor {
     this.container.setAttribute('role', 'button');
     this.container.setAttribute('aria-label', params.day);
     this.container.setAttribute('tabIndex', 0);
+
+    let ariaLabel = `${this.params.a11y.door} ${this.params.day}.`;
+    if (!this.canBeOpened()) {
+      ariaLabel += this.params.a11y.locked;
+    }
+    this.container.setAttribute('aria-label', ariaLabel);
+
     if (!this.canBeOpened()) {
       this.container.classList.add('h5p-advent-calendar-disabled');
     }
@@ -92,6 +99,7 @@ export default class AdventCalendarDoor {
 
     // PreviewImage
     this.previewImage = document.createElement('button');
+    this.previewImage.setAttribute('aria-label', this.params.a11y.content.replace('@door', `${this.params.a11y.door} ${this.params.day}.`));
     this.previewImage.setAttribute('tabIndex', -1);
     this.previewImage.classList.add('h5p-advent-calendar-preview-image');
     this.container.appendChild(this.previewImage);
@@ -182,22 +190,13 @@ export default class AdventCalendarDoor {
 
     this.container.classList.add('h5p-advent-calendar-open');
     this.container.setAttribute('tabIndex', -1);
-
+    this.container.removeAttribute('role'); // Will get focus otherwise
     this.previewImage.setAttribute('tabIndex', 0);
 
     if (!params.skipCallback) {
       this.callbacks.onOpened(this.params.day, params.delay);
     }
   }
-
-  /**
-   * Close the door. Not in use here.
-   */
-  close() {
-    this.container.classList.remove('h5p-advent-calendar-open');
-    this.opened = false;
-  }
-
 
   /**
    * Lock door.
@@ -235,6 +234,8 @@ export default class AdventCalendarDoor {
     if (this.params.designMode) {
       return true;
     }
+
+    return this.params.day < 10;
 
     // Check for date in december, keep open whole december
     const date = new Date();

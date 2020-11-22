@@ -264,5 +264,36 @@
         "default": "Close window"
       }
     ]
+  },
+  {
+    "name": "a11y",
+    "type": "group",
+    "common": true,
+    "label": "Accessibility",
+    "importance": "low",
+    "fields": [
+      {
+        "name": "door",
+        "type": "text",
+        "label": "Door",
+        "importance": "low",
+        "default": "Door"
+      },
+      {
+        "name": "locked",
+        "type": "text",
+        "label": "Locked",
+        "importance": "low",
+        "default": "Locked. It is not time to open this one yet."
+      },
+      {
+        "name": "content",
+        "description": "Announce the content. @door is a variable and will be replaced with the related door description.",
+        "type": "text",
+        "label": "Content of",
+        "importance": "low",
+        "default": "Content of @door"
+      }
+    ]
   }
 ]

@@ -147,6 +147,24 @@
           "default": "Fenster schließen"
         }
       ]
+    },
+    {
+      "label": "Barrierefreiheit",
+      "fields": [
+        {
+          "label": "Türchen",
+          "default": "Türchen"
+        },
+        {
+          "label": "Verschlossen",
+          "default": "Verschlossen. Es ist noch nicht Zeit, das Türchen zu öffnen."
+        },
+        {
+          "description": "Verkünde den Inhalt. @door ist ein Platzhalter und wird durch die Beschreibung der Tür ersetzt.",
+          "label": "Inhalt von",
+          "default": "Inhalt von @door"
+        }
+      ]
     }
   ]
 }

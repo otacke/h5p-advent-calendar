@@ -147,6 +147,24 @@
           "default": "Close window"
         }
       ]
+    },
+    {
+      "label": "Accessibility",
+      "fields": [
+        {
+          "label": "Door",
+          "default": "Door"
+        },
+        {
+          "label": "Locked",
+          "default": "Locked. It is not time to open this one yet."
+        },
+        {
+          "description": "Announce the content. @door is a variable and will be replaced with the related door description.",
+          "label": "Content of",
+          "default": "Content of @door"
+        }
+      ]
     }
   ]
 }
