@@ -253,6 +253,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       if (!params.content[params.content.type]) {
         // No content defined for this door
         this.doors.forEach(door => door.door.unlock());
+        params.door.focus(); // Focus current door.
+
         return;
       }
 
