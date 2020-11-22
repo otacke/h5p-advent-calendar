@@ -1,6 +1,7 @@
 import AdventCalendarDoor from './h5p-advent-calendar-door';
 import Overlay from './h5p-advent-calendar-overlay';
 import Util from './h5p-advent-calendar-util';
+import 'core-js/features/promise';
 
 export default class AdventCalendar extends H5P.EventDispatcher {
   /**
