@@ -152,7 +152,7 @@ export default class Overlay {
    */
   updateFocusableElements() {
     this.focusableElements = []
-      .slice.call(this.overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .slice.call(this.overlay.querySelectorAll('video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
       .filter(element => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }
 
@@ -169,12 +169,15 @@ export default class Overlay {
     this.overlay.classList.remove('h5p-advent-calendar-invisible');
     this.blocker.classList.remove('h5p-advent-calendar-display-none');
 
-    this.updateFocusableElements();
-    if (this.focusableElements.length > 0) {
-      this.focusableElements[0].focus();
-    }
+    setTimeout(() => {
+      this.updateFocusableElements(); // Won't find YouTube elements in iframe
 
-    this.isVisible = true;
+      if (this.focusableElements.length > 0) {
+        this.focusableElements[0].focus();
+      }
+
+      this.isVisible = true;
+    }, 0);
   }
 
   /**

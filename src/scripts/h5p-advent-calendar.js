@@ -339,8 +339,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       else {
         this.resize();
 
-        this.overlay.show();
         this.overlay.setContent(this.instances[day].wrapper);
+        this.overlay.show();
         this.instances[day].instance.trigger('resize');
       }
 
