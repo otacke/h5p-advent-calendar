@@ -244,6 +244,7 @@
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-instance-wrapper.h5p-image {
+  overflow: hidden;
   width: 100%;
 }
 
