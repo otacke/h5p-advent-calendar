@@ -235,8 +235,6 @@ export default class AdventCalendarDoor {
       return true;
     }
 
-    return this.params.day < 10;
-
     // Check for date in december, keep open whole december
     const date = new Date();
     return date.getMonth() === 11 && date.getDate() >= this.params.day;
