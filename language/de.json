@@ -132,23 +132,6 @@
       ]
     },
     {
-      "label": "Sprache anpassen",
-      "fields": [
-        {
-          "label": "Ton stummschalten",
-          "default": "Ton stummschalten"
-        },
-        {
-          "label": "Ton einschalten",
-          "default": "Ton einschalten"
-        },
-        {
-          "label": "Fenster schließen",
-          "default": "Fenster schließen"
-        }
-      ]
-    },
-    {
       "label": "Barrierefreiheit",
       "fields": [
         {
@@ -163,6 +146,18 @@
           "description": "Verkünde den Inhalt. @door ist ein Platzhalter und wird durch die Beschreibung der Tür ersetzt.",
           "label": "Inhalt von",
           "default": "Inhalt von @door"
+        },
+        {
+          "label": "Ton stummschalten",
+          "default": "Ton stummschalten"
+        },
+        {
+          "label": "Ton einschalten",
+          "default": "Ton einschalten"
+        },
+        {
+          "label": "Fenster schließen",
+          "default": "Fenster schließen"
         }
       ]
     }

@@ -236,36 +236,6 @@
     ]
   },
   {
-    "name": "l10n",
-    "type": "group",
-    "common": true,
-    "label": "Localize",
-    "importance": "low",
-    "fields": [
-      {
-        "name": "mute",
-        "type": "text",
-        "label": "Mute audio",
-        "importance": "low",
-        "default": "Mute audio"
-      },
-      {
-        "name": "unmute",
-        "type": "text",
-        "label": "Unmute audio",
-        "importance": "low",
-        "default": "Unmute audio"
-      },
-      {
-        "name": "closeWindow",
-        "type": "text",
-        "label": "Close window",
-        "importance": "low",
-        "default": "Close window"
-      }
-    ]
-  },
-  {
     "name": "a11y",
     "type": "group",
     "common": true,
@@ -293,6 +263,27 @@
         "label": "Content of",
         "importance": "low",
         "default": "Content of @door"
+      },
+      {
+        "name": "mute",
+        "type": "text",
+        "label": "Mute audio",
+        "importance": "low",
+        "default": "Mute audio"
+      },
+      {
+        "name": "unmute",
+        "type": "text",
+        "label": "Unmute audio",
+        "importance": "low",
+        "default": "Unmute audio"
+      },
+      {
+        "name": "closeWindow",
+        "type": "text",
+        "label": "Close window",
+        "importance": "low",
+        "default": "Close window"
       }
     ]
   }

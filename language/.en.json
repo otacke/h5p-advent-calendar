@@ -132,23 +132,6 @@
       ]
     },
     {
-      "label": "Localize",
-      "fields": [
-        {
-          "label": "Mute audio",
-          "default": "Mute audio"
-        },
-        {
-          "label": "Unmute audio",
-          "default": "Unmute audio"
-        },
-        {
-          "label": "Close window",
-          "default": "Close window"
-        }
-      ]
-    },
-    {
       "label": "Accessibility",
       "fields": [
         {
@@ -163,6 +146,18 @@
           "description": "Announce the content. @door is a variable and will be replaced with the related door description.",
           "label": "Content of",
           "default": "Content of @door"
+        },
+        {
+          "label": "Mute audio",
+          "default": "Mute audio"
+        },
+        {
+          "label": "Unmute audio",
+          "default": "Unmute audio"
+        },
+        {
+          "label": "Close window",
+          "default": "Close window"
         }
       ]
     }

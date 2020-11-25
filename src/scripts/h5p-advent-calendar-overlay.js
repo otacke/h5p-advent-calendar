@@ -18,7 +18,7 @@ export default class Overlay {
         offsetHorizontal : 0,
         offsetVertical : 0
       },
-      l10n: {
+      a11y: {
         closeWindow: 'Close'
       }
     }, params);
@@ -33,8 +33,8 @@ export default class Overlay {
     this.overlay.classList.add(`${this.params.styleBase}-outer-wrapper`);
     this.overlay.classList.add('h5p-advent-calendar-invisible');
     this.overlay.setAttribute('role', 'dialog');
-    if (this.params.l10n.title) {
-      this.overlay.setAttribute('aria-label', this.params.l10n.title);
+    if (this.params.a11y.title) {
+      this.overlay.setAttribute('aria-label', this.params.a11y.title);
     }
     this.overlay.setAttribute('aria-modal', 'true');
 
@@ -45,7 +45,7 @@ export default class Overlay {
 
     this.buttonClose = document.createElement('button');
     this.buttonClose.classList.add(`${this.params.styleBase}-button-close`);
-    this.buttonClose.setAttribute('title', this.params.l10n.closeWindow);
+    this.buttonClose.setAttribute('aria-label', this.params.a11y.closeWindow);
     this.buttonClose.addEventListener('click', () => {
       this.callbacks.onClose();
     });

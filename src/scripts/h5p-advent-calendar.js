@@ -24,24 +24,17 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         randomize: false,
         keepImageOrder: false
       },
-      l10n: {
-        closeWindow: 'Close window',
-        mute: 'Mute audio',
-        unmute: 'Unmute audio'
-      },
       a11y: {
         door: 'Door',
         locked: 'Locked. It is not time to open this one yet.',
-        content: 'Content of @door'
+        content: 'Content of @door',
+        closeWindow: 'Close window',
+        mute: 'Mute audio',
+        unmute: 'Unmute audio'
       }
     }, params);
 
     this.doorsLoaded = 0;
-
-    // Decode HTML
-    for (let key in this.params.l10n) {
-      this.params.l10n[key] = Util.htmlDecode(this.params.l10n[key]);
-    }
 
     // Decode HTML
     for (let key in this.params.a11y) {
@@ -151,21 +144,21 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       this.buttonAudio.classList.add('h5p-advent-calendar-audio-button');
       if (this.muted) {
         this.buttonAudio.classList.add('muted');
-        this.buttonAudio.setAttribute('title', this.params.l10n.unmute);
+        this.buttonAudio.setAttribute('aria-label', this.params.a11y.unmute);
       }
       else {
         this.buttonAudio.classList.add('unmuted');
-        this.buttonAudio.setAttribute('title', this.params.l10n.mute);
+        this.buttonAudio.setAttribute('aria-label', this.params.a11y.mute);
       }
 
       this.buttonAudio.addEventListener('click', () => {
         const muted = this.toggleButtonAudio();
         if (!muted) {
-          this.buttonAudio.setAttribute('title', this.params.l10n.mute);
+          this.buttonAudio.setAttribute('aria-label', this.params.a11y.mute);
           this.playAudio();
         }
         else {
-          this.buttonAudio.setAttribute('title', this.params.l10n.unmute);
+          this.buttonAudio.setAttribute('aria-label', this.params.a11y.unmute);
           this.stopAudio();
         }
       });
@@ -195,8 +188,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     // Overlay
     this.overlay = new Overlay(
       {
-        l10n: {
-          closeWindow: this.params.l10n.closeWindow
+        a11y: {
+          closeWindow: this.params.a11y.closeWindow
         }
       },
       {
@@ -439,12 +432,12 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     if (this.muted) {
       this.buttonAudio.classList.remove('unmuted');
       this.buttonAudio.classList.add('muted');
-      this.buttonAudio.title = this.params.l10n.unmute;
+      this.buttonAudio.setAttribute('aria-label', this.params.a11y.unmute);
     }
     else {
       this.buttonAudio.classList.add('unmuted');
       this.buttonAudio.classList.remove('muted');
-      this.buttonAudio.title = this.params.l10n.mute;
+      this.buttonAudio.setAttribute('aria-label', this.params.a11y.mute);
     }
 
     return this.muted;
