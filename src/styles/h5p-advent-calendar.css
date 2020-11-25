@@ -74,7 +74,7 @@
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-doorway {
-  height: 100%;
+  height: calc(100% + 1px); /* Fix for Firefox rendering */
   perspective: 50em;
   position: absolute;
   top: 0;
