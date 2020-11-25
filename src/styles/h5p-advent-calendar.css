@@ -270,11 +270,11 @@
   display: block;
   font-size: 1em;
   height: 1.5em;
-  left: 0.5em;
+  left: 0.25em;
   overflow: hidden;
   padding: 0;
   position: absolute;
-  bottom: 0.5em;
+  bottom: 0.25em;
   transition: border-color 100ms, opacity 100ms;
   width: 1.5em;
   z-index: 4;
