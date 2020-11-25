@@ -2,7 +2,6 @@ import AdventCalendarDoor from './h5p-advent-calendar-door';
 import Overlay from './h5p-advent-calendar-overlay';
 import Spinner from './h5p-advent-calendar-spinner';
 import Util from './h5p-advent-calendar-util';
-import 'core-js/features/promise';
 
 export default class AdventCalendar extends H5P.EventDispatcher {
   /**
@@ -462,16 +461,19 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     // People might slide quickly ...
     if (!this.backgroundMusic.promise) {
       this.backgroundMusic.promise = this.backgroundMusic.player.play();
-      this.backgroundMusic.promise
-        .then(() => {
-          this.backgroundMusic.promise = null;
-          this.toggleButtonAudio(false);
-        })
-        .catch(() => {
-          // Browser policy prevents playing
-          this.backgroundMusic.promise = null;
-          this.toggleButtonAudio(true);
-        });
+
+      if (this.backgroundMusic.promise) {
+        this.backgroundMusic.promise
+          .then(() => {
+            this.backgroundMusic.promise = null;
+            this.toggleButtonAudio(false);
+          })
+          .catch(() => {
+            // Browser policy prevents playing
+            this.backgroundMusic.promise = null;
+            this.toggleButtonAudio(true);
+          });
+      }
     }
   }
 
