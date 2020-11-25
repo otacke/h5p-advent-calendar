@@ -36,6 +36,16 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       }
     }, params);
 
+    // Decode HTML
+    for (let key in this.params.l10n) {
+      this.params.l10n[key] = Util.htmlDecode(this.params.l10n[key]);
+    }
+
+    // Decode HTML
+    for (let key in this.params.a11y) {
+      this.params.a11y[key] = Util.htmlDecode(this.params.a11y[key]);
+    }
+
     // Fill up missing doors
     while (params.doors.length < 24) {
       params.doors.push({});

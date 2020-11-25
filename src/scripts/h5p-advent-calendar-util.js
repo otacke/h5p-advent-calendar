@@ -22,6 +22,16 @@ class Util {
   }
 
   /**
+   * Retrieve true string from HTML encoded string.
+   * @param {string} input Input string.
+   * @return {string} Output string.
+   */
+  static htmlDecode(input) {
+    var dparser = new DOMParser().parseFromString(input, 'text/html');
+    return dparser.documentElement.textContent;
+  }
+
+  /**
    * Shuffle array.
    * @param {object[]} array Array.
    * @return {object[]} Shuffled array.
