@@ -377,6 +377,12 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     const player = document.createElement('audio');
     player.src = H5P.getPath(params[0].path, contentId);
+
+    // Loop background music
+    player.addEventListener('ended', () => {
+      this.playAudio();
+    });
+
     return {
       player: player,
       promise: null
