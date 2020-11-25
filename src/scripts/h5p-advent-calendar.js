@@ -1,5 +1,6 @@
 import AdventCalendarDoor from './h5p-advent-calendar-door';
 import Overlay from './h5p-advent-calendar-overlay';
+import Spinner from './h5p-advent-calendar-spinner';
 import Util from './h5p-advent-calendar-util';
 import 'core-js/features/promise';
 
@@ -35,6 +36,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         content: 'Content of @door'
       }
     }, params);
+
+    this.doorsLoaded = 0;
 
     // Decode HTML
     for (let key in this.params.l10n) {
@@ -91,9 +94,14 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.container = document.createElement('div');
     this.container.classList.add('h5p-advent-calendar-container');
 
+    // Spinner to indicate loading
+    this.spinner = new Spinner('h5p-advent-calendar-spinner');
+    this.container.appendChild(this.spinner.getDOM());
+
     // Main table
     this.table = document.createElement('div');
     this.table.classList.add('h5p-advent-calendar-table');
+    this.table.classList.add('h5p-advent-calendar-display-none');
     if (params.behaviour.backgroundImage && params.behaviour.backgroundImage.path) {
       const backgroundImage = document.createElement('img');
       H5P.setSource(backgroundImage, params.behaviour.backgroundImage, contentId);
@@ -127,6 +135,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         {
           onOpened: (day, delay) => {
             this.handleOverlayOpened(day, delay);
+          },
+          onLoaded: () => {
+            this.handleDoorLoaded();
           }
         }
       );
@@ -375,6 +386,19 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     // Give focus back to previously opened door
     this.doors.filter(door => door.day === this.currentDayOpened)[0].door.focus();
+  }
+
+  /**
+   * Handler for door loaded. Show calendar after all doors are done.
+   */
+  handleDoorLoaded() {
+    this.doorsLoaded++;
+
+    if (this.doorsLoaded === 24) {
+      this.spinner.hide();
+      this.table.classList.remove('h5p-advent-calendar-display-none');
+      this.trigger('resize');
+    }
   }
 
   /**

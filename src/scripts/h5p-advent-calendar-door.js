@@ -8,8 +8,10 @@ export default class AdventCalendarDoor {
 
     this.callbacks = callbacks || {};
     this.callbacks.onOpened = callbacks.onOpened || (() => {});
+    this.callbacks.onLoaded = callbacks.onLoaded || (() => {});
 
     this.opened = false;
+    this.toLoad = ['door', 'previewImage'];
 
     // Square content
     this.container = document.createElement('div');
@@ -91,10 +93,20 @@ export default class AdventCalendarDoor {
     if (this.params.content.doorCover && this.params.content.doorCover.path) {
       const source = H5P.getPath(this.params.content.doorCover.path, this.params.contentId);
       if (source) {
-        doorLeft.style.backgroundImage = `url("${source}")`;
-        doorRight.style.backgroundImage = `url("${source}")`;
+        let preloadImage = document.createElement('img');
+        preloadImage.src = source;
+        preloadImage.addEventListener('load', () => {
+          doorLeft.style.backgroundImage = `url("${source}")`;
+          doorRight.style.backgroundImage = `url("${source}")`;
+          preloadImage = null;
+          this.handleLoaded('door');
+        });
+
         this.container.classList.add('h5p-advent-calendar-cover-image');
       }
+    }
+    else {
+      this.toLoad = this.toLoad.filter(item => item !== 'door');
     }
 
     // PreviewImage
@@ -106,11 +118,22 @@ export default class AdventCalendarDoor {
     if (this.params.content.previewImage && this.params.content.previewImage.path) {
       const source = H5P.getPath(this.params.content.previewImage.path, this.params.contentId);
       if (source) {
-        this.previewImage.style.backgroundImage = `url("${source}")`;
+        let preloadImage = document.createElement('img');
+        preloadImage.src = source;
+        preloadImage.addEventListener('load', () => {
+          this.previewImage.style.backgroundImage = `url("${source}")`;
+          preloadImage = null;
+          this.handleLoaded('previewImage');
+        });
       }
     }
     else {
+      this.toLoad = this.toLoad.filter(item => item !== 'previewImage');
       this.previewImage.innerText = params.day;
+    }
+
+    if (this.toLoad.length === 0) {
+      this.callbacks.onLoaded();
     }
 
     // Execute open action on click on previewImage
@@ -166,6 +189,17 @@ export default class AdventCalendarDoor {
     this.container.removeEventListener('keypress', (event) => {
       this.handleKeypress(event);
     });
+  }
+
+  /**
+   * Handle loading of items to determine when door loading is loaded.
+   */
+  handleLoaded(itemName) {
+    this.toLoad = this.toLoad.filter(item => item !== itemName);
+
+    if (this.toLoad.length === 0) {
+      this.callbacks.onLoaded();
+    }
   }
 
   /**
