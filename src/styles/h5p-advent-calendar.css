@@ -338,10 +338,11 @@
 }
 .h5p-advent-calendar-snow span {
   display: inline-block;
-  background-color: rgba(240, 240, 255, 0.9);
+  background-image: url(../images/snowflake.png);
+  background-size: cover;
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
+  width: 13px;
+  height: 13px;
 	margin: -280px 60px 54px -34px;
 
   -webkit-animation: snow 12s infinite cubic-bezier(0.35,0.45,0.39,0.29);

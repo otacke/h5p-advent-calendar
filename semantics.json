@@ -168,7 +168,7 @@
         "name": "snow",
         "type": "boolean",
         "label": "Let it snow",
-        "description": "Will add some snow falling in front of the calendar.",
+        "description": "Will add some snow falling in front of the calendar. It never rains in Southern California, it never snows on IE11.",
         "default": false,
         "optional": true
       },

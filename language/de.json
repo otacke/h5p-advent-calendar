@@ -98,7 +98,7 @@
         },
         {
           "label": "Lass es schnei'n",
-          "description": "Fügt dem Kalender etwas Schnee hinzu."
+          "description": "Fügt dem Kalender etwas Schnee hinzu. Es regnet nie in Südkalifornien, es schneit nicht auf dem IE11."
         },
         {
           "label": "Verstecke den Rahmen der Türchen"
