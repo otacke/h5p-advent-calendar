@@ -227,7 +227,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       this.h5pContainer = this.h5pContainer || document.body.querySelector('.h5p-container');
       if (this.h5pContainer) {
         // Relative heights (100% on parents) don't work, content still overflows
-        this.instances[this.currentDayOpened].wrapper.style.maxHeight = `calc(${this.h5pContainer.offsetHeight}px - 7em)`;
+        if (this.instances[this.currentDayOpened]) {
+          this.instances[this.currentDayOpened].wrapper.style.maxHeight = `calc(${this.h5pContainer.offsetHeight}px - 7em)`;
+        }
       }
     }
   }
