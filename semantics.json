@@ -237,6 +237,30 @@
     ]
   },
   {
+    "name": "l10n",
+    "type": "group",
+    "common": true,
+    "label": "Localization",
+    "importance": "low",
+    "fields": [
+      {
+        "name": "nothingToSee",
+        "type": "text",
+        "label": "Nothing to see",
+        "importance": "low",
+        "default": "There is nothing to see here!\ud83c\udf84"
+      },
+      {
+        "name": "dummy",
+        "type": "text",
+        "label": "Dummy",
+        "importance": "low",
+        "default": "Dummy",
+        "widget": "none"
+      }
+    ]
+  },
+  {
     "name": "a11y",
     "type": "group",
     "common": true,

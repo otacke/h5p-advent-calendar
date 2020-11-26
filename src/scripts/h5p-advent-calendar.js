@@ -24,6 +24,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         randomize: false,
         keepImageOrder: false
       },
+      l10n: {
+        nothingToSee: 'There is nothing to see here!\ud83c\udf84'
+      },
       a11y: {
         door: 'Door',
         locked: 'Locked. It is not time to open this one yet.',
@@ -39,6 +42,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.continueBackgroundMusic = null;
 
     // Decode HTML
+    for (let key in this.params.l10n) {
+      this.params.l10n[key] = Util.htmlDecode(this.params.l10n[key]);
+    }
     for (let key in this.params.a11y) {
       this.params.a11y[key] = Util.htmlDecode(this.params.a11y[key]);
     }
@@ -50,6 +56,11 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     // Add day to doors
     this.doors = params.doors.map((door, index) => {
+      if (!door.type) {
+        door.type = 'text';
+        door.text.params.text = this.params.l10n.nothingToSee;
+      }
+
       return {
         day: index + 1,
         content: door

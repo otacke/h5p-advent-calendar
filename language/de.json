@@ -132,6 +132,19 @@
       ]
     },
     {
+      "label": "Bezeichnungen und Beschriftungen",
+      "fields": [
+        {
+          "label": "Nichts zu sehen!",
+          "default": "Hier gibt es nichts zu sehen!\ud83c\udf84"
+        },
+        {
+          "label": "Dummy",
+          "default": "Dummy"
+        }
+      ]
+    },
+    {
       "label": "Barrierefreiheit",
       "fields": [
         {

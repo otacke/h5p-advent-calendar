@@ -132,6 +132,19 @@
       ]
     },
     {
+      "label": "Localization",
+      "fields": [
+        {
+          "label": "Nothing to see",
+          "default": "There is nothing to see here!\ud83c\udf84"
+        },
+        {
+          "label": "Dummy",
+          "default": "Dummy"
+        }
+      ]
+    },
+    {
       "label": "Accessibility",
       "fields": [
         {
