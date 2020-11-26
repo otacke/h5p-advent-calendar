@@ -194,6 +194,13 @@
         "optional": true
       },
       {
+        "name": "doorImageTemplate",
+        "type": "image",
+        "label": "Door image template",
+        "description": "If an image is set, it will be used for every door unless a specific door image is set for a single door.",
+        "optional": true
+      },
+      {
         "name": "hideDoorBorder",
         "type": "boolean",
         "label": "Hide door border",

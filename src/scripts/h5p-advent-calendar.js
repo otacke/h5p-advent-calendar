@@ -54,8 +54,15 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       params.doors.push({});
     }
 
+    const doorImageTemplate = (params.behaviour.doorImageTemplate && params.behaviour.doorImageTemplate.path) ?
+      params.behaviour.doorImageTemplate : null;
+
     // Add day to doors
     this.doors = params.doors.map((door, index) => {
+      if (doorImageTemplate && !door.doorCover) {
+        door.doorCover = doorImageTemplate;
+      }
+
       if (!door.type) {
         door.type = 'text';
         door.text.params.text = this.params.l10n.nothingToSee;

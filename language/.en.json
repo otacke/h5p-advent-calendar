@@ -110,6 +110,10 @@
           "description": "Will add some snow falling in front of the calendar. It never rains in Southern California, it never snows on IE11."
         },
         {
+          "label": "Door image template",
+          "description": "If an image is set, it will be used for every door unless a specific door image is set for a single door."
+        },
+        {
           "label": "Hide door border"
         },
         {
@@ -145,7 +149,7 @@
       "fields": [
         {
           "label": "Nothing to see",
-          "default": "There is nothing to see here!\ud83c\udf84"
+          "default": "There is nothing to see here!🎄"
         },
         {
           "label": "Dummy",

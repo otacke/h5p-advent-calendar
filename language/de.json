@@ -110,6 +110,10 @@
           "description": "Fügt dem Kalender etwas Schnee hinzu. Es regnet nie in Südkalifornien, es schneit nicht auf dem IE11."
         },
         {
+          "label": "Vorlagebild für Türchen",
+          "description": "Wenn ein Bild gesetzt ist, wird es als Vordergrund für jedes einzelne Türchen genutzt, für das kein spezielles Bild angegeben ist."
+        },
+        {
           "label": "Verstecke den Rahmen der Türchen"
         },
         {
