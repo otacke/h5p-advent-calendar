@@ -64,6 +64,9 @@ export default class Overlay {
     this.blocker = document.createElement('div');
     this.blocker.classList.add('h5p-advent-calendar-overlay-blocker');
     this.blocker.classList.add('h5p-advent-calendar-display-none');
+    this.blocker.addEventListener('click', () => {
+      this.callbacks.onClose();
+    });
 
     // Extra classes
     this.modifierClasses = [];
