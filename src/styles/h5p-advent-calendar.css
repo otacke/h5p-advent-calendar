@@ -90,10 +90,6 @@
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-doorway.h5p-advent-calendar-right {
-  right: calc(0.2em - 2px);
-}
-
-.h5p-advent-calendar .h5p-advent-calendar-square-content.h5p-advent-calendar-cover-image .h5p-advent-calendar-doorway.h5p-advent-calendar-right {
   right: 0;
 }
 
@@ -274,11 +270,11 @@
   display: block;
   font-size: 1em;
   height: 1.5em;
-  left: 0.25em;
+  left: 0.5em;
   overflow: hidden;
   padding: 0;
   position: absolute;
-  bottom: 0.25em;
+  bottom: 0.5em;
   transition: border-color 100ms, opacity 100ms;
   width: 1.5em;
   z-index: 4;
@@ -487,14 +483,14 @@
   border: none;
   padding: 3px;
   line-height: 1;
-  color: #bd3e3e;
+  color: #222;
   z-index: 3;
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-overlay-button-close:after {
   font-family: 'H5PFontAwesome4';
   content: '\f00d';
-  border: 1px solid #bd3e3e;
+  border: 1px solid #222;
   text-align: center;
   border-radius: 50%;
   width: 1.5em;
