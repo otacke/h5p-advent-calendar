@@ -90,6 +90,10 @@
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-doorway.h5p-advent-calendar-right {
+  right: calc(0.2em - 2px);
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-square-content.h5p-advent-calendar-cover-image .h5p-advent-calendar-doorway.h5p-advent-calendar-right {
   right: 0;
 }
 
@@ -352,7 +356,7 @@
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-link-symbol::after {
-  content: "\f01d";
+  content: "\f0c1";
 }
 
 /* Snow */
