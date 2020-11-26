@@ -541,14 +541,12 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     if (this.backgroundMusic.promise) {
       this.backgroundMusic.promise.then(() => {
         this.backgroundMusic.player.pause();
-        this.backgroundMusic.player.load(); // Reset
         this.backgroundMusic.promise = null;
         this.toggleButtonAudio(true);
       });
     }
     else {
       this.backgroundMusic.player.pause();
-      this.backgroundMusic.player.load(); // Reset
       this.toggleButtonAudio(true);
     }
   }
