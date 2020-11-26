@@ -73,6 +73,15 @@
                 {}
               ]
             }
+          },
+          {
+            "label": "Automatisch abspielen",
+            "showWhen": {
+              "rules": [
+                {},
+                {}
+              ]
+            }
           }
         ]
       },

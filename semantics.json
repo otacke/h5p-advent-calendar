@@ -128,6 +128,26 @@
               }
             ]
           }
+        },
+        {
+          "name": "autoplay",
+          "type": "boolean",
+          "label": "Autoplay",
+          "default": false,
+          "widget": "showWhen",
+          "showWhen": {
+            "type": "or",
+            "rules": [
+              {
+                "field": "type",
+                "equals": "audio"
+              },
+              {
+                "field": "type",
+                "equals": "video"
+              }
+            ]
+          }
         }
       ]
     },

@@ -297,7 +297,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
           playerMode: 'full',
           fitToWrapper: false,
           controls: true,
-          autoplay: false
+          autoplay: params.content.autoplay || false
         }, this.contentId);
 
         instance.attach(H5P.jQuery(instanceWrapper));
@@ -330,7 +330,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
             controls: true
           },
           playback: {
-            autoplay: false,
+            autoplay: params.content.autoplay || false,
             loop: false
           }
         }, this.contentId);
@@ -391,6 +391,11 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         this.overlay.setContent(this.instances[day].wrapper);
         this.overlay.show();
         this.instances[day].instance.trigger('resize');
+
+        // Passing autoplay alone doesn't suffice
+        if (params.content.type && params.content.autoplay && this.instances[day].instance.audio.paused) {
+          this.instances[day].instance.play();
+        }
       }
 
       this.doors.forEach(door => door.door.unlock());

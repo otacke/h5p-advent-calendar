@@ -73,6 +73,15 @@
                 {}
               ]
             }
+          },
+          {
+            "label": "Autoplay",
+            "showWhen": {
+              "rules": [
+                {},
+                {}
+              ]
+            }
           }
         ]
       },
