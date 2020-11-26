@@ -312,13 +312,47 @@
 
 .h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-link-symbol::after {
   bottom: 0.1em;
-  color: #ffffff;
+  color: #000;
   content: "\f0c1";
   font-family: 'H5PFontAwesome4';
   font-size: 0.5em;
   position: absolute;
   right: 0.1em;
-  text-shadow: 1px 0 0 #000000, 1px 0 0 #000000, 0 1px 0 #000000, 0 -1px 0 #000000, 1px 1px #000000, 1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000;
+  text-shadow: 1px 0 0 #fff, 1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, 1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-text-symbol::after,
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-image-symbol::after,
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-audio-symbol::after,
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-video-symbol::after,
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-link-symbol::after {
+  bottom: 0.1em;
+  color: #000;
+  font-family: 'H5PFontAwesome4';
+  font-size: 0.5em;
+  position: absolute;
+  right: 0.1em;
+  text-shadow: 1px 0 0 #fff, 1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, 1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-text-symbol::after {
+  content: "\f0f6";
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-image-symbol::after {
+  content: "\f03e";
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-audio-symbol::after {
+  content: "\f028";
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-video-symbol::after {
+  content: "\f01d";
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-preview-image.h5p-advent-calendar-link-symbol::after {
+  content: "\f01d";
 }
 
 /* Snow */

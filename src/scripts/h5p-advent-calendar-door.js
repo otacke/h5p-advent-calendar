@@ -114,6 +114,8 @@ export default class AdventCalendarDoor {
     this.previewImage.setAttribute('aria-label', this.params.a11y.content.replace('@door', `${this.params.a11y.door} ${this.params.day}.`));
     this.previewImage.setAttribute('tabIndex', -1);
     this.previewImage.classList.add('h5p-advent-calendar-preview-image');
+    this.previewImage.classList.add(`h5p-advent-calendar-${params.content.type}-symbol`);
+
     this.container.appendChild(this.previewImage);
     if (this.params.content.previewImage && this.params.content.previewImage.path) {
       const source = H5P.getPath(this.params.content.previewImage.path, this.params.contentId);
@@ -272,13 +274,6 @@ export default class AdventCalendarDoor {
     // Check for date in december, keep open whole december
     const date = new Date();
     return date.getMonth() === 11 && date.getDate() >= this.params.day;
-  }
-
-  /**
-   * Add link symbol to preview image. Hint for when browser policy prevents window.open().
-   */
-  addLinkSymbol() {
-    this.previewImage.classList.add('h5p-advent-calendar-link-symbol');
   }
 }
 

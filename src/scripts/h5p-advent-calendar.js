@@ -383,12 +383,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
           .querySelector('.h5p-link a')
           .getAttribute('href');
 
-        const opened = window.open(url, '_blank');
-        if (!opened) {
-          // Browser policy may prevent window.open asynchronously
-          const door = this.doors.filter(door => door.day === day)[0];
-          door.door.addLinkSymbol();
-        }
+        window.open(url, '_blank');
       }
       else {
         this.resize();
