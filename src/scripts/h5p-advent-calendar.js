@@ -36,6 +36,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     this.doorsLoaded = 0;
 
+    this.continueBackgroundMusic = null;
+
     // Decode HTML
     for (let key in this.params.a11y) {
       this.params.a11y[key] = Util.htmlDecode(this.params.a11y[key]);
@@ -289,6 +291,19 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
         instance.attach(H5P.jQuery(instanceWrapper));
         instance.audio.style.width = '100%';
+
+        if (this.backgroundMusic) {
+          // Listen to state changes
+          instance.audio.addEventListener('play', () => {
+            this.handleOverlayMedia('play');
+          });
+          instance.audio.addEventListener('pause', () => {
+            this.handleOverlayMedia('stop');
+          });
+          instance.audio.addEventListener('ended', () => {
+            this.handleOverlayMedia('stop');
+          });
+        }
       }
       else if (params.content.type === 'video') {
 
@@ -310,6 +325,18 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         }, this.contentId);
 
         instance.attach(H5P.jQuery(instanceWrapper));
+
+        if (this.backgroundMusic) {
+          // Listen to state change
+          instance.on('stateChange', (state) => {
+            if (state.data === H5P.Video.PLAYING) {
+              this.handleOverlayMedia('play');
+            }
+            else if (state.data === H5P.Video.PAUSED || state.data === H5P.Video.ENDED) {
+              this.handleOverlayMedia('stop');
+            }
+          });
+        }
       }
       else {
 
@@ -378,6 +405,24 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     // Give focus back to previously opened door
     this.doors.filter(door => door.day === this.currentDayOpened)[0].door.focus();
+  }
+
+  handleOverlayMedia(state) {
+    if (!this.backgroundMusic || !this.backgroundMusic.player) {
+      return;
+    }
+
+    if (state === 'play') {
+      this.continueBackgroundMusic = !this.backgroundMusic.player.paused;
+      if (this.continueBackgroundMusic) {
+        this.stopAudio();
+      }
+    }
+    else if (state === 'stop') {
+      if (this.continueBackgroundMusic) {
+        this.playAudio();
+      }
+    }
   }
 
   /**
@@ -483,11 +528,13 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         this.backgroundMusic.player.pause();
         this.backgroundMusic.player.load(); // Reset
         this.backgroundMusic.promise = null;
+        this.toggleButtonAudio(true);
       });
     }
     else {
       this.backgroundMusic.player.pause();
       this.backgroundMusic.player.load(); // Reset
+      this.toggleButtonAudio(true);
     }
   }
 }
