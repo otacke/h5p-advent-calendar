@@ -407,6 +407,10 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.doors.filter(door => door.day === this.currentDayOpened)[0].door.focus();
   }
 
+  /**
+   * Handle media in overlay.
+   * @param {string} state State the media are in.
+   */
   handleOverlayMedia(state) {
     if (!this.backgroundMusic || !this.backgroundMusic.player) {
       return;
