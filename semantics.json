@@ -143,6 +143,7 @@
     "type": "group",
     "label": "Behavioural settings",
     "description": "These options will let you override behaviour settings.",
+    "importance": "low",
     "fields": [
       {
         "name": "backgroundImage",
