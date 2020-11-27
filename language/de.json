@@ -35,53 +35,22 @@
             ]
           },
           {
-            "label": "Tondatei",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Tondatei"
           },
           {
-            "label": "Bild",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Bild"
           },
           {
-            "label": "Link",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Link"
           },
           {
-            "label": "Text",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Text"
           },
           {
-            "label": "Video",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Video"
           },
           {
-            "label": "Automatisch abspielen",
-            "showWhen": {
-              "rules": [
-                {},
-                {}
-              ]
-            }
+            "label": "Automatisch abspielen"
           }
         ]
       },
@@ -131,12 +100,7 @@
         },
         {
           "label": "Bilderreihenfolge beibehalten",
-          "description": "Mische die Türchen, aber behalte deren Deckbilder an ihrer eigentlichen Position beginnend bei 1 in der Ecke links oben bis hinunter zur 24 in der Ecke rechts unten.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Mische die Türchen, aber behalte deren Deckbilder an ihrer eigentlichen Position beginnend bei 1 in der Ecke links oben bis hinunter zur 24 in der Ecke rechts unten."
         },
         {
           "label": "Designmodus",

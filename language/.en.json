@@ -35,53 +35,22 @@
             ]
           },
           {
-            "label": "Audio",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Audio"
           },
           {
-            "label": "Image",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Image"
           },
           {
-            "label": "Link",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Link"
           },
           {
-            "label": "Text",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Text"
           },
           {
-            "label": "Video",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Video"
           },
           {
-            "label": "Autoplay",
-            "showWhen": {
-              "rules": [
-                {},
-                {}
-              ]
-            }
+            "label": "Autoplay"
           }
         ]
       },
@@ -131,12 +100,7 @@
         },
         {
           "label": "Keep order of images",
-          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner."
         },
         {
           "label": "Design mode",
