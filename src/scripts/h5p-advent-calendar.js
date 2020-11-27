@@ -190,7 +190,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     }
 
     // Add snow effect if set
-    if (params.behaviour.snow) {
+    const date = new Date();
+    if (params.behaviour.snow || date.getMonth() === 11 && date.getDate() >= 24) {
       const sky = document.createElement('div');
       sky.classList.add('h5p-advent-calendar-sky');
       this.container.appendChild(sky);
