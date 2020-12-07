@@ -401,7 +401,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         this.instances[day].instance.trigger('resize');
 
         // Passing autoplay alone doesn't suffice
-        if (params.content.type && params.content.autoplay && this.instances[day].instance.audio.paused) {
+        if (params.content.type && params.content.autoplay && this.instances[day].instance.audio && this.instances[day].instance.audio.paused) {
           this.instances[day].instance.play();
         }
       }
