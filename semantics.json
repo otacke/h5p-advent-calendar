@@ -14,7 +14,7 @@
           "name": "doorCover",
           "type": "image",
           "label": "Door image",
-          "description": "Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the the left half fit the right half."
+          "description": "Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the left half fit the right half."
         },
         {
           "name": "previewImage",
