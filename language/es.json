@@ -113,7 +113,7 @@
       "fields": [
         {
           "label": "Nada para ver",
-          "default": "¡Aquí no hay nada para ver!🎄"
+          "default": "¡Aquí no hay nada para ver!\ud83c\udf84"
         },
         {
           "label": "Dummy",

@@ -113,7 +113,7 @@
       "fields": [
         {
           "label": "Nothing to see",
-          "default": "There is nothing to see here!🎄"
+          "default": "There is nothing to see here! \ud83c\udf84"
         },
         {
           "label": "Dummy",

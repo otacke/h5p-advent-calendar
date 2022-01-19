@@ -113,7 +113,7 @@
       "fields": [
         {
           "label": "Ez dago ezer ikusteko",
-          "default": "Hemen ez dago ezer ikusteko!🎄"
+          "default": "Hemen ez dago ezer ikusteko!\ud83c\udf84"
         },
         {
           "label": "Manikia",

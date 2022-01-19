@@ -35,53 +35,22 @@
             ]
           },
           {
-            "label": "Audio",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Audio"
           },
           {
-            "label": "Afbeelding",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Afbeelding"
           },
           {
-            "label": "Link",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Link"
           },
           {
-            "label": "Tekst",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Tekst"
           },
           {
-            "label": "Video",
-            "showWhen": {
-              "rules": [
-                {}
-              ]
-            }
+            "label": "Video"
           },
           {
-            "label": "Automatisch afspelen",
-            "showWhen": {
-              "rules": [
-                {},
-                {}
-              ]
-            }
+            "label": "Automatisch afspelen"
           }
         ]
       },
@@ -131,12 +100,7 @@
         },
         {
           "label": "Houd de volgorde van de afbeeldingen bij",
-          "description": "Schud de deuren, maar houd de deurbedekkingsafbeeldingen op hun vaste posities beginnend met 1 in de linkerbovenhoek tot 24 in de rechteronderhoek.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Schud de deuren, maar houd de deurbedekkingsafbeeldingen op hun vaste posities beginnend met 1 in de linkerbovenhoek tot 24 in de rechteronderhoek."
         },
         {
           "label": "Ontwerp modus",
@@ -149,7 +113,7 @@
       "fields": [
         {
           "label": "Niets te zien",
-          "default": "Er is hier niets te zien!🎄"
+          "default": "Er is hier niets te zien!\ud83c\udf84"
         },
         {
           "label": "Dummy",
