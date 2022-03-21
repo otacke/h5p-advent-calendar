@@ -175,10 +175,10 @@ export default class AdventCalendarDoor {
    */
   setDoorCover(params = {}) {
     params = Util.extend({
-      image: { src: '' },
       styles: {},
       offset: { left: 0, top: 0 }
     }, params);
+    params.image = params.image || { src: '' };
 
     this.container.classList.toggle('h5p-advent-calendar-cover-image', params.image.src !== '');
 
