@@ -1,5 +1,23 @@
 [
   {
+    "name": "modeDoorImage",
+    "type": "select",
+    "label": "Mode for door images",
+    "description": "Select whether you want to set each custom door image yourself or let H5P do the work for you based on the calendar background image set in the behavioural settings.",
+    "options": [
+      {
+        "value": "manual",
+        "label": "I want to set each door image myself"
+      },
+      {
+        "value": "automatic",
+        "label": "H5P shall set the door images based on the background image"
+      }
+    ],
+    "default": "manual",
+    "state": "new"
+  },
+  {
     "name": "doors",
     "type": "list",
     "label": "Doors",
@@ -10,18 +28,6 @@
       "name": "contentGroup",
       "type": "group",
       "fields": [
-        {
-          "name": "doorCover",
-          "type": "image",
-          "label": "Door image",
-          "description": "Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the left half fit the right half."
-        },
-        {
-          "name": "previewImage",
-          "type": "image",
-          "label": "Background image",
-          "description": "Image that should appear inside the door. Will be the door's number by default."
-        },
         {
           "name": "type",
           "type": "select",
@@ -148,6 +154,29 @@
               }
             ]
           }
+        },
+        {
+          "name": "doorCover",
+          "type": "image",
+          "label": "Door image",
+          "description": "Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the left half fit the right half.",
+          "optional": true,
+          "widget": "showWhen",
+          "showWhen": {
+            "rules": [
+              {
+                "field": "../../modeDoorImage",
+                "equals": "manual"
+              }
+            ]
+          }
+        },
+        {
+          "name": "previewImage",
+          "type": "image",
+          "label": "Background image",
+          "description": "Image that should appear inside the door. Will be the door's number by default.",
+          "optional": true
         }
       ]
     },
@@ -198,7 +227,16 @@
         "type": "image",
         "label": "Door image template",
         "description": "If an image is set, it will be used for every door unless a specific door image is set for a single door.",
-        "optional": true
+        "optional": true,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "../modeDoorImage",
+              "equals": "manual"
+            }
+          ]
+        }
       },
       {
         "name": "hideDoorBorder",

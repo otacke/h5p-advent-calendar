@@ -59,34 +59,34 @@ export default class AdventCalendarDoor {
     doorContainer.appendChild(doorwayRight);
 
     // Left door
-    const doorLeft = document.createElement('div');
-    doorLeft.classList.add('h5p-advent-calendar-door');
-    doorLeft.classList.add('h5p-advent-calendar-left');
-    doorwayLeft.appendChild(doorLeft);
+    this.doorLeft = document.createElement('div');
+    this.doorLeft.classList.add('h5p-advent-calendar-door');
+    this.doorLeft.classList.add('h5p-advent-calendar-left');
+    doorwayLeft.appendChild(this.doorLeft);
 
     if (!params.hideNumbers) {
       const doorLeftNumber = document.createElement('div');
       doorLeftNumber.classList.add('h5p-advent-calendar-door-number');
       doorLeftNumber.innerText = params.day;
-      doorLeft.appendChild(doorLeftNumber);
+      this.doorLeft.appendChild(doorLeftNumber);
     }
 
     if (!params.hideDoorKnobs) {
       const doorLeftDoorknob = document.createElement('div');
       doorLeftDoorknob.classList.add('h5p-advent-calendar-doorknob');
-      doorLeft.appendChild(doorLeftDoorknob);
+      this.doorLeft.appendChild(doorLeftDoorknob);
     }
 
     // Right door
-    const doorRight = document.createElement('div');
-    doorRight.classList.add('h5p-advent-calendar-door');
-    doorRight.classList.add('h5p-advent-calendar-right');
-    doorwayRight.appendChild(doorRight);
+    this.doorRight = document.createElement('div');
+    this.doorRight.classList.add('h5p-advent-calendar-door');
+    this.doorRight.classList.add('h5p-advent-calendar-right');
+    doorwayRight.appendChild(this.doorRight);
 
     if (!params.hideDoorKnobs) {
       const doorRightDoorknob = document.createElement('div');
       doorRightDoorknob.classList.add('h5p-advent-calendar-doorknob');
-      doorRight.appendChild(doorRightDoorknob);
+      this.doorRight.appendChild(doorRightDoorknob);
     }
 
     // Door cover
@@ -96,8 +96,8 @@ export default class AdventCalendarDoor {
         let preloadImage = document.createElement('img');
         preloadImage.src = source;
         preloadImage.addEventListener('load', () => {
-          doorLeft.style.backgroundImage = `url("${source}")`;
-          doorRight.style.backgroundImage = `url("${source}")`;
+          this.doorLeft.style.backgroundImage = `url("${source}")`;
+          this.doorRight.style.backgroundImage = `url("${source}")`;
           preloadImage = null;
           this.handleLoaded('door');
         });
@@ -159,6 +159,30 @@ export default class AdventCalendarDoor {
    */
   getDOM() {
     return this.container;
+  }
+
+  setDoorCover(params = {}) {
+    params.image = params.image || { src: '' };
+    params.styles = params.styles || {};
+    params.offset = params.offset || { left: 0, top: 0 };
+
+    this.container.classList.toggle('h5p-advent-calendar-cover-image', params.image.src !== '');
+
+    this.doorLeft.style.backgroundImage = `url("${params.image.src}")`;
+    this.doorRight.style.backgroundImage = `url("${params.image.src}")`;
+
+    const doorLeftRect = this.doorLeft.getBoundingClientRect();
+    this.doorLeft.style.backgroundPosition = `left ${params.offset.left - doorLeftRect.left}px top ${params.offset.top - doorLeftRect.top}px`;
+
+    const doorRightRect = this.doorRight.getBoundingClientRect();
+    const doorRightStyle = getComputedStyle(this.doorRight);
+    const doorRightBorderLeft = parseFloat(doorRightStyle.getPropertyValue('border-left').split(' ')[0]);
+    this.doorRight.style.backgroundPosition = `left ${params.offset.left - doorRightRect.left - doorRightBorderLeft}px top ${params.offset.top - doorRightRect.top}px`;
+
+    for (let property in params.styles) {
+      this.doorLeft.style[property] = params.styles[property];
+      this.doorRight.style[property] = params.styles[property];
+    }
   }
 
   /**

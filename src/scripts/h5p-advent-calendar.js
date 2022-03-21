@@ -14,6 +14,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     super();
 
     this.params = Util.extend({
+      modeDoorImage: 'manual',
       behaviour: {
         autoplay: false,
         snow: false,
@@ -56,6 +57,17 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     const doorImageTemplate = (params.behaviour.doorImageTemplate && params.behaviour.doorImageTemplate.path) ?
       params.behaviour.doorImageTemplate : null;
+
+    if (params.behaviour?.backgroundImage?.path) {
+      const source = H5P.getPath(params.behaviour.backgroundImage.path, contentId);
+      if (source) {
+        this.backgroundImage = document.createElement('img');
+        this.backgroundImage.addEventListener('load', () => {
+          this.trigger('resize');
+        });
+        this.backgroundImage.src = source;
+      }
+    }
 
     // Add day to doors
     this.doors = params.doors.map((door, index) => {
@@ -237,6 +249,35 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.trigger('resize');
   }
 
+  updateDoorCovers() {
+    if (
+      this.params.modeDoorImage !== 'automatic' ||
+      !this.backgroundImage
+    ) {
+      return; // Not possible to automatically set door covers
+    }
+
+    // Compute size and position for door covers
+    const containerRect = this.container.getBoundingClientRect();
+    const scaleByHeight = (containerRect.width / containerRect.height < this.backgroundImage.naturalWidth / this.backgroundImage.naturalHeight);
+    const coverWidth = (scaleByHeight) ?
+      this.backgroundImage.naturalWidth / this.backgroundImage.naturalHeight * containerRect.height :
+      containerRect.width;
+    const coverHeight = (scaleByHeight) ?
+      containerRect.height :
+      this.backgroundImage.naturalHeight / this.backgroundImage.naturalWidth * containerRect.width;
+
+    this.doors.forEach(door => {
+      door.door.setDoorCover({
+        image: this.backgroundImage,
+        styles: {
+          'background-size': `${coverWidth}px ${coverHeight}px`
+        },
+        offset: { left: containerRect.left, top: containerRect.top }
+      });
+    });
+  }
+
   /**
    * Resize.
    */
@@ -256,6 +297,11 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         }
       }
     }
+
+    clearTimeout(this.resizeTimeout);
+    this.resizeTimeout = setTimeout(() => {
+      this.updateDoorCovers();
+    }, 0);
   }
 
   /**

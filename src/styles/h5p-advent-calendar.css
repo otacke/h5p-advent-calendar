@@ -81,7 +81,7 @@
   perspective: 50em;
   position: absolute;
   top: 0;
-  width: calc(50% - 0.05em);
+  width: 50%;
   z-index: 1;
 }
 
@@ -90,19 +90,12 @@
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-doorway.h5p-advent-calendar-right {
-  right: calc(0.2em - 2px);
-}
-
-.h5p-advent-calendar .h5p-advent-calendar-square-content.h5p-advent-calendar-cover-image .h5p-advent-calendar-doorway.h5p-advent-calendar-right {
   right: 0;
-}
-
-.h5p-advent-calendar .h5p-advent-calendar-square-content.h5p-advent-calendar-hide-door-frame .h5p-advent-calendar-doorway {
-  width: 50%;
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-door {
   background-size: cover;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -151,7 +144,7 @@
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-square-content:not(.h5p-advent-calendar-hide-door-frame).h5p-advent-calendar-cover-image .h5p-advent-calendar-door.h5p-advent-calendar-left {
-  border-right: 0.2em dashed #cccccc;
+  border-right: 0.1em dashed #cccccc;
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-door-number {
@@ -201,7 +194,7 @@
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-square-content:not(.h5p-advent-calendar-hide-door-frame).h5p-advent-calendar-cover-image .h5p-advent-calendar-door.h5p-advent-calendar-right {
-  border-left: 0.2em dashed #cccccc;
+  border-left: 0.1em dashed #cccccc;
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-square-content.h5p-advent-calendar-open .h5p-advent-calendar-door.h5p-advent-calendar-left {
