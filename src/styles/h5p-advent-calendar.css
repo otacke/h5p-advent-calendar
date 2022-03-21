@@ -416,7 +416,7 @@
 @-webkit-keyframes snow {
   0% {
     opacity: 1;
-    -webkit-transform: translate(0, 0px) rotateZ(0deg);
+    -webkit-transform: translate(0, -100px) rotateZ(0deg);
   }
   75% {
     opacity: 1;
@@ -431,7 +431,7 @@
 @-moz-keyframes snow {
   0% {
     opacity: 1;
-    -webkit-transform: translate(0, 0px) rotateZ(0deg);
+    -webkit-transform: translate(0, -100px) rotateZ(0deg);
   }
   75% {
     opacity: 1;
