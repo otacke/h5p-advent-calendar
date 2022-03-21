@@ -1,3 +1,5 @@
+import Util from './h5p-advent-calendar-util';
+
 export default class AdventCalendarDoor {
   /**
    * @constructor
@@ -161,16 +163,30 @@ export default class AdventCalendarDoor {
     return this.container;
   }
 
+  /**
+   * Set door cover.
+   * @param {object} params Parameters.
+   * @param {Image} [params.image] HTML image element.
+   * @param {string} [params.image.src] Image src.
+   * @param {object} [params.styles] CSS properties for image.
+   * @param {object} [params.offset] Offset of main container.
+   * @param {number} [params.offset.left] Left offset of main container.
+   * @param {number} [params.offset.top] Top offset of main container.
+   */
   setDoorCover(params = {}) {
-    params.image = params.image || { src: '' };
-    params.styles = params.styles || {};
-    params.offset = params.offset || { left: 0, top: 0 };
+    params = Util.extend({
+      image: { src: '' },
+      styles: {},
+      offset: { left: 0, top: 0 }
+    }, params);
 
     this.container.classList.toggle('h5p-advent-calendar-cover-image', params.image.src !== '');
 
+    // Set image as background
     this.doorLeft.style.backgroundImage = `url("${params.image.src}")`;
     this.doorRight.style.backgroundImage = `url("${params.image.src}")`;
 
+    // Set background offset based of door position
     const doorLeftRect = this.doorLeft.getBoundingClientRect();
     this.doorLeft.style.backgroundPosition = `left ${params.offset.left - doorLeftRect.left}px top ${params.offset.top - doorLeftRect.top}px`;
 
@@ -179,6 +195,7 @@ export default class AdventCalendarDoor {
     const doorRightBorderLeft = parseFloat(doorRightStyle.getPropertyValue('border-left').split(' ')[0]);
     this.doorRight.style.backgroundPosition = `left ${params.offset.left - doorRightRect.left - doorRightBorderLeft}px top ${params.offset.top - doorRightRect.top}px`;
 
+    // Apply properties
     for (let property in params.styles) {
       this.doorLeft.style[property] = params.styles[property];
       this.doorRight.style[property] = params.styles[property];

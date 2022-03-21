@@ -249,6 +249,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.trigger('resize');
   }
 
+  /**
+   * Update door covers.
+   */
   updateDoorCovers() {
     if (
       this.params.modeDoorImage !== 'automatic' ||
