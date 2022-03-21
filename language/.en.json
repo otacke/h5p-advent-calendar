@@ -1,18 +1,22 @@
 {
   "semantics": [
     {
+      "label": "Mode for door images",
+      "description": "Select whether you want to set each custom door image yourself or let H5P do the work for you based on the calendar background image set in the behavioural settings.",
+      "options": [
+        {
+          "label": "I want to set each door image myself"
+        },
+        {
+          "label": "H5P shall set the door images based on the background image"
+        }
+      ]
+    },
+    {
       "label": "Doors",
       "entity": "door",
       "field": {
         "fields": [
-          {
-            "label": "Door image",
-            "description": "Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the left half fit the right half."
-          },
-          {
-            "label": "Background image",
-            "description": "Image that should appear inside the door. Will be the door's number by default."
-          },
           {
             "label": "Content type",
             "description": "Content type that shoud optionally pop up when the door is opened.",
@@ -51,6 +55,14 @@
           },
           {
             "label": "Autoplay"
+          },
+          {
+            "label": "Door image",
+            "description": "Image that will be used for the door. Needs to have a size ratio of 1:1 if you want the left half fit the right half."
+          },
+          {
+            "label": "Background image",
+            "description": "Image that should appear inside the door. Will be the door's number by default."
           }
         ]
       },
@@ -61,22 +73,11 @@
       ]
     },
     {
-      "label": "Behavioural settings",
-      "description": "These options will let you override behaviour settings.",
+      "label": "Visual settings",
+      "description": "These options will let you configure the visual appearance.",
       "fields": [
         {
           "label": "Calendar background image"
-        },
-        {
-          "label": "Background music"
-        },
-        {
-          "label": "Autoplay background music",
-          "description": "If set, the background music will play automatically once the content is opened. Please note: Some browsers' media policy may prevent autoplay."
-        },
-        {
-          "label": "Let it snow",
-          "description": "Will add some snow falling in front of the calendar. It never rains in Southern California, it never snows on IE11."
         },
         {
           "label": "Door image template",
@@ -94,6 +95,29 @@
         {
           "label": "Hide door frame"
         },
+        {
+          "label": "Let it snow",
+          "description": "Will add some snow falling in front of the calendar. It never rains in Southern California, it never snows on IE11."
+        }
+      ]
+    },
+    {
+      "label": "Audio settings",
+      "description": "These options will let you configure the audio appearance.",
+      "fields": [
+        {
+          "label": "Background music"
+        },
+        {
+          "label": "Autoplay background music",
+          "description": "If set, the background music will play automatically once the content is opened. Please note: Some browsers' media policy may prevent autoplay."
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "description": "These options will let you override behaviour settings.",
+      "fields": [
         {
           "label": "Random order",
           "description": "Shuffle the order of the doors. If the \"save content state\" option is set in the H5P settings, that order will stay the same when the user returns later."
@@ -113,7 +137,7 @@
       "fields": [
         {
           "label": "Nothing to see",
-          "default": "There is nothing to see here! \ud83c\udf84"
+          "default": "There is nothing to see here!\ud83c\udf84"
         },
         {
           "label": "Dummy",

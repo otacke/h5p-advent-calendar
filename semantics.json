@@ -14,8 +14,7 @@
         "label": "H5P shall set the door images based on the background image"
       }
     ],
-    "default": "manual",
-    "state": "new"
+    "default": "automatic"
   },
   {
     "name": "doors",
@@ -188,38 +187,16 @@
     ]
   },
   {
-    "name": "behaviour",
+    "name": "visuals",
     "type": "group",
-    "label": "Behavioural settings",
-    "description": "These options will let you override behaviour settings.",
+    "label": "Visual settings",
+    "description": "These options will let you configure the visual appearance.",
     "importance": "low",
     "fields": [
       {
         "name": "backgroundImage",
         "type": "image",
         "label": "Calendar background image",
-        "optional": true
-      },
-      {
-        "name": "backgroundMusic",
-        "type": "audio",
-        "label": "Background music",
-        "optional": true
-      },
-      {
-        "name": "autoplay",
-        "type": "boolean",
-        "label": "Autoplay background music",
-        "description": "If set, the background music will play automatically once the content is opened. Please note: Some browsers' media policy may prevent autoplay.",
-        "default": false,
-        "optional": true
-      },
-      {
-        "name": "snow",
-        "type": "boolean",
-        "label": "Let it snow",
-        "description": "Will add some snow falling in front of the calendar. It never rains in Southern California, it never snows on IE11.",
-        "default": false,
         "optional": true
       },
       {
@@ -266,6 +243,46 @@
         "default": false,
         "optional": true
       },
+      {
+        "name": "snow",
+        "type": "boolean",
+        "label": "Let it snow",
+        "description": "Will add some snow falling in front of the calendar. It never rains in Southern California, it never snows on IE11.",
+        "default": false,
+        "optional": true
+      }
+    ]
+  },
+  {
+    "name": "audio",
+    "type": "group",
+    "label": "Audio settings",
+    "description": "These options will let you configure the audio appearance.",
+    "importance": "low",
+    "fields": [
+      {
+        "name": "backgroundMusic",
+        "type": "audio",
+        "label": "Background music",
+        "optional": true
+      },
+      {
+        "name": "autoplay",
+        "type": "boolean",
+        "label": "Autoplay background music",
+        "description": "If set, the background music will play automatically once the content is opened. Please note: Some browsers' media policy may prevent autoplay.",
+        "default": false,
+        "optional": true
+      }
+    ]
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings",
+    "description": "These options will let you override behaviour settings.",
+    "importance": "low",
+    "fields": [
       {
         "name": "randomize",
         "type": "boolean",

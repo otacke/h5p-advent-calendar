@@ -1,18 +1,22 @@
 {
   "semantics": [
     {
+      "label": "Mode for door images",
+      "description": "Select whether you want to set each custom door image yourself or let H5P do the work for you based on the calendar background image set in the behavioural settings.",
+      "options": [
+        {
+          "label": "I want to set each door image myself"
+        },
+        {
+          "label": "H5P shall set the door images based on the background image"
+        }
+      ]
+    },
+    {
       "label": "Deuren",
       "entity": "deur",
       "field": {
         "fields": [
-          {
-            "label": "Afbeelding deur",
-            "description": "Beeld dat gebruikt zal worden voor de deur. Je hebt een maatverhouding van 1:1 nodig als je wilt dat de linkerhelft op de rechterhelft past."
-          },
-          {
-            "label": "Achtergrondafbeelding",
-            "description": "De afbeelding die binnenin de deur gaat verschijnen. Dit zal standaard het nummer van de deur zijn."
-          },
           {
             "label": "Inhoudstype",
             "description": "Het inhoudstype dat optioneel verschijnt bij het openen van de deur.",
@@ -51,6 +55,14 @@
           },
           {
             "label": "Automatisch afspelen"
+          },
+          {
+            "label": "Afbeelding deur",
+            "description": "Beeld dat gebruikt zal worden voor de deur. Je hebt een maatverhouding van 1:1 nodig als je wilt dat de linkerhelft op de rechterhelft past."
+          },
+          {
+            "label": "Achtergrondafbeelding",
+            "description": "De afbeelding die binnenin de deur gaat verschijnen. Dit zal standaard het nummer van de deur zijn."
           }
         ]
       },
@@ -61,22 +73,11 @@
       ]
     },
     {
-      "label": "Gedragsinstellingen",
-      "description": "Met deze opties kunt je de gedragsinstellingen overschrijven.",
+      "label": "Visual settings",
+      "description": "These options will let you configure the visual appearance.",
       "fields": [
         {
           "label": "Achtergrondafbeelding van de kalender"
-        },
-        {
-          "label": "Achtergrondmuziek"
-        },
-        {
-          "label": "Automatisch afspelen van de achtergrondmuziek",
-          "description": "Indien ingesteld, wordt de achtergrondmuziek automatisch afgespeeld zodra de inhoud wordt geopend. Let op: het mediabeleid van sommige browsers kan automatisch afspelen verhinderen."
-        },
-        {
-          "label": "Laat het sneeuwen",
-          "description": "Dit zal wat sneeuw toevoegen die voor de kalender valt. Het regent nooit in Zuid-Californië, het sneeuwt nooit op IE11."
         },
         {
           "label": "Sjabloon voor deurafbeeldingen",
@@ -94,6 +95,29 @@
         {
           "label": "Verbergingsdeurkozijnen"
         },
+        {
+          "label": "Laat het sneeuwen",
+          "description": "Dit zal wat sneeuw toevoegen die voor de kalender valt. Het regent nooit in Zuid-Californië, het sneeuwt nooit op IE11."
+        }
+      ]
+    },
+    {
+      "label": "Audio settings",
+      "description": "These options will let you configure the audio appearance.",
+      "fields": [
+        {
+          "label": "Achtergrondmuziek"
+        },
+        {
+          "label": "Automatisch afspelen van de achtergrondmuziek",
+          "description": "Indien ingesteld, wordt de achtergrondmuziek automatisch afgespeeld zodra de inhoud wordt geopend. Let op: het mediabeleid van sommige browsers kan automatisch afspelen verhinderen."
+        }
+      ]
+    },
+    {
+      "label": "Gedragsinstellingen",
+      "description": "Met deze opties kunt je de gedragsinstellingen overschrijven.",
+      "fields": [
         {
           "label": "Willekeurige volgorde",
           "description": "Schud de volgorde van de deuren. Als de optie \"save content state\" is ingesteld in de H5P instellingen, blijft die volgorde hetzelfde als de gebruiker later terugkomt."

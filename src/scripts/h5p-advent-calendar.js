@@ -14,14 +14,18 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     super();
 
     this.params = Util.extend({
-      modeDoorImage: 'manual',
-      behaviour: {
-        autoplay: false,
-        snow: false,
+      modeDoorImage: 'automatic',
+      visuals: {
         hideDoorBorder: false,
         hideNumbers: false,
         hideDoorKnobs: false,
         hideDoorFrame: false,
+        snow: false
+      },
+      audio: {
+        autoplay: false
+      },
+      behaviour: {
         randomize: false,
         keepImageOrder: false
       },
@@ -55,11 +59,11 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       params.doors.push({});
     }
 
-    const doorImageTemplate = (params.behaviour.doorImageTemplate && params.behaviour.doorImageTemplate.path) ?
-      params.behaviour.doorImageTemplate : null;
+    const doorImageTemplate = (params.visuals.doorImageTemplate && params.visuals.doorImageTemplate.path) ?
+      params.visuals.doorImageTemplate : null;
 
-    if (params.behaviour?.backgroundImage?.path) {
-      const source = H5P.getPath(params.behaviour.backgroundImage.path, contentId);
+    if (params.visuals?.backgroundImage?.path) {
+      const source = H5P.getPath(params.visuals.backgroundImage.path, contentId);
       if (source) {
         this.backgroundImage = document.createElement('img');
         this.backgroundImage.addEventListener('load', () => {
@@ -112,7 +116,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     this.instances = Array(25);
 
-    this.muted = !this.params.behaviour.autoplay;
+    this.muted = !this.params.audio.autoplay;
 
     // Container
     this.container = document.createElement('div');
@@ -126,10 +130,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.table = document.createElement('div');
     this.table.classList.add('h5p-advent-calendar-table');
     this.table.classList.add('h5p-advent-calendar-display-none');
-    if (params.behaviour.backgroundImage && params.behaviour.backgroundImage.path) {
-      const backgroundImage = document.createElement('img');
-      H5P.setSource(backgroundImage, params.behaviour.backgroundImage, contentId);
-      this.table.style.backgroundImage = `url('${backgroundImage.src}')`;
+
+    if (this.backgroundImage) {
+      this.table.style.backgroundImage = `url('${this.backgroundImage.src}')`;
     }
     this.container.appendChild(this.table);
 
@@ -145,10 +148,10 @@ export default class AdventCalendar extends H5P.EventDispatcher {
           day: door.day,
           content: door.content,
           open: door.open,
-          hideDoorBorder: params.behaviour.hideDoorBorder,
-          hideNumbers: params.behaviour.hideNumbers,
-          hideDoorKnobs: params.behaviour.hideDoorKnobs,
-          hideDoorFrame: params.behaviour.hideDoorFrame,
+          hideDoorBorder: params.visuals.hideDoorBorder,
+          hideNumbers: params.visuals.hideNumbers,
+          hideDoorKnobs: params.visuals.hideDoorKnobs,
+          hideDoorFrame: params.visuals.hideDoorFrame,
           designMode: params.behaviour.designMode,
           a11y: {
             door: this.params.a11y.door,
@@ -169,8 +172,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     });
 
     // Add audio button if backgroundMusic is assigned
-    if (params.behaviour.backgroundMusic) {
-      this.backgroundMusic = this.createAudio(params.behaviour.backgroundMusic, contentId);
+    if (params.audio.backgroundMusic) {
+      this.backgroundMusic = this.createAudio(params.audio.backgroundMusic, contentId);
 
       this.buttonAudio = document.createElement('button');
       this.buttonAudio.classList.add('h5p-advent-calendar-audio-button');
@@ -196,14 +199,14 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       });
       this.container.appendChild(this.buttonAudio);
 
-      if (params.behaviour.autoplay) {
+      if (params.audio.autoplay) {
         this.playAudio();
       }
     }
 
     // Add snow effect if set
     const date = new Date();
-    if (params.behaviour.snow || date.getMonth() === 11 && date.getDate() >= 24) {
+    if (params.visuals.snow || date.getMonth() === 11 && date.getDate() >= 24) {
       const sky = document.createElement('div');
       sky.classList.add('h5p-advent-calendar-sky');
       this.container.appendChild(sky);
@@ -255,13 +258,19 @@ export default class AdventCalendar extends H5P.EventDispatcher {
   updateDoorCovers() {
     if (
       this.params.modeDoorImage !== 'automatic' ||
-      !this.backgroundImage
+      !this.backgroundImage ||
+      this.backgroundImage.naturalWidth === 0 ||
+      this.backgroundImage.naturalHeight === 0
     ) {
       return; // Not possible to automatically set door covers
     }
 
     // Compute size and position for door covers
     const containerRect = this.container.getBoundingClientRect();
+    if (containerRect.height === 0) {
+      return; // Not ready yet
+    }
+
     const scaleByHeight = (containerRect.width / containerRect.height < this.backgroundImage.naturalWidth / this.backgroundImage.naturalHeight);
     const coverWidth = (scaleByHeight) ?
       this.backgroundImage.naturalWidth / this.backgroundImage.naturalHeight * containerRect.height :

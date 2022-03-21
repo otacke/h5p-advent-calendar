@@ -1,18 +1,22 @@
 {
   "semantics": [
     {
+      "label": "Mode for door images",
+      "description": "Select whether you want to set each custom door image yourself or let H5P do the work for you based on the calendar background image set in the behavioural settings.",
+      "options": [
+        {
+          "label": "I want to set each door image myself"
+        },
+        {
+          "label": "H5P shall set the door images based on the background image"
+        }
+      ]
+    },
+    {
       "label": "Türchen",
       "entity": "Türchen",
       "field": {
         "fields": [
-          {
-            "label": "Bild für das Türchen",
-            "description": "Bild, das für die Tür verwendet wird. Benötigt ein Seitenverhältnis von 1:1, wenn die linke Hälfte zur rechten Hälfte passen soll."
-          },
-          {
-            "label": "Hintergrundbild",
-            "description": "Bild, das hinter dem Türchen erscheinen soll. Ohne Bild wird die Nummer des Türchens angezeigt."
-          },
           {
             "label": "Inhaltstyp",
             "description": "Inhaltstyp, der optional erscheinen soll, wenn das Türchen geöffnet wurde.",
@@ -51,6 +55,14 @@
           },
           {
             "label": "Automatisch abspielen"
+          },
+          {
+            "label": "Bild für das Türchen",
+            "description": "Bild, das für die Tür verwendet wird. Benötigt ein Seitenverhältnis von 1:1, wenn die linke Hälfte zur rechten Hälfte passen soll."
+          },
+          {
+            "label": "Hintergrundbild",
+            "description": "Bild, das hinter dem Türchen erscheinen soll. Ohne Bild wird die Nummer des Türchens angezeigt."
           }
         ]
       },
@@ -61,22 +73,11 @@
       ]
     },
     {
-      "label": "Verhaltenseinstellungen",
-      "description": "Diese Optionen legen fest, wie der Kalender im Detail funktioniert.",
+      "label": "Visual settings",
+      "description": "These options will let you configure the visual appearance.",
       "fields": [
         {
           "label": "Hintergrundbild für den Kalender"
-        },
-        {
-          "label": "Hintergrundmusik"
-        },
-        {
-          "label": "Hintergrundmusik automatisch abspielen",
-          "description": "Wenn angewählt, wird die Hintergrundmusik automatisch abgespielt, wenn der Inhalt aufgerufen wird. Hinweis: Die Regeln einiger Browser verhindern möglicherweise das automatische Abspielen."
-        },
-        {
-          "label": "Lass es schnei'n",
-          "description": "Fügt dem Kalender etwas Schnee hinzu. Es regnet nie in Südkalifornien, es schneit nicht auf dem IE11."
         },
         {
           "label": "Vorlagebild für Türchen",
@@ -94,6 +95,29 @@
         {
           "label": "Verstecke Rand der Türchen"
         },
+        {
+          "label": "Lass es schnei'n",
+          "description": "Fügt dem Kalender etwas Schnee hinzu. Es regnet nie in Südkalifornien, es schneit nicht auf dem IE11."
+        }
+      ]
+    },
+    {
+      "label": "Audio settings",
+      "description": "These options will let you configure the audio appearance.",
+      "fields": [
+        {
+          "label": "Hintergrundmusik"
+        },
+        {
+          "label": "Hintergrundmusik automatisch abspielen",
+          "description": "Wenn angewählt, wird die Hintergrundmusik automatisch abgespielt, wenn der Inhalt aufgerufen wird. Hinweis: Die Regeln einiger Browser verhindern möglicherweise das automatische Abspielen."
+        }
+      ]
+    },
+    {
+      "label": "Verhaltenseinstellungen",
+      "description": "Diese Optionen legen fest, wie der Kalender im Detail funktioniert.",
+      "fields": [
         {
           "label": "Zufällige Reihenfolge",
           "description": "Mische die Reihenfolge der Türchen. Falls die \"save content state\"-Option in den H5P-Einstellungen aktiviert wurde, bleibt die Reihenfolge erhalten, wenn Nutzer:innen später zurückkehren."
