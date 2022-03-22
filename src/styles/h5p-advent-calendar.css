@@ -384,6 +384,8 @@
   -webkit-animation: snow 12s infinite cubic-bezier(0.35,0.45,0.39,0.29);
   -moz-animation: snow 12s infinite cubic-bezier(0.35,0.45,0.39,0.29);
   animation: snow 12s infinite cubic-bezier(0.35,0.45,0.39,0.29);
+
+  transform: translate(0, -60px);
 }
 
 .h5p-advent-calendar-snow span:nth-child(5n+5) {
@@ -446,7 +448,7 @@
 @-moz-keyframes snow {
   0% {
     opacity: 1;
-    -webkit-transform: translate(0, -100px) rotateZ(0deg);
+    -webkit-transform: translate(0, 0) rotateZ(0deg);
   }
   75% {
     opacity: 1;
