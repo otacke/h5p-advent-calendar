@@ -120,15 +120,39 @@
       "fields": [
         {
           "label": "Willekeurige volgorde",
-          "description": "Schud de volgorde van de deuren. Als de optie \"save content state\" is ingesteld in de H5P instellingen, blijft die volgorde hetzelfde als de gebruiker later terugkomt."
+          "description": "Schud de volgorde van de deuren. Als de optie \"save content state\" is ingesteld in de H5P instellingen, blijft die volgorde hetzelfde als de gebruiker later terugkomt.",
+          "options": [
+            {
+              "label": "Fixed"
+            },
+            {
+              "label": "Dynamic"
+            }
+          ]
         },
         {
           "label": "Houd de volgorde van de afbeeldingen bij",
-          "description": "Schud de deuren, maar houd de deurbedekkingsafbeeldingen op hun vaste posities beginnend met 1 in de linkerbovenhoek tot 24 in de rechteronderhoek."
+          "description": "Schud de deuren, maar houd de deurbedekkingsafbeeldingen op hun vaste posities beginnend met 1 in de linkerbovenhoek tot 24 in de rechteronderhoek.",
+          "options": [
+            {
+              "label": "6 × 4"
+            },
+            {
+              "label": "4 × 6"
+            }
+          ]
         },
         {
           "label": "Ontwerp modus",
           "description": "In de ontwerpmodus kunnen alle deuren worden geopend. Anders kunnen de deuren alleen in december worden geopend op en na de dag die is aangegeven met het deurnummer."
+        },
+        {
+          "label": "Keep order of images",
+          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner."
+        },
+        {
+          "label": "Design mode",
+          "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number."
         }
       ]
     },

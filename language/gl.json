@@ -120,15 +120,39 @@
       "fields": [
         {
           "label": "Ordear ao chou",
-          "description": "Facer aleatoria a orde das portas. Se está activa a opción \"gardar o estado do contido\" na configuración H5P, manterase esa orde cando o usuario regrese máis tarde."
+          "description": "Facer aleatoria a orde das portas. Se está activa a opción \"gardar o estado do contido\" na configuración H5P, manterase esa orde cando o usuario regrese máis tarde.",
+          "options": [
+            {
+              "label": "Fixed"
+            },
+            {
+              "label": "Dynamic"
+            }
+          ]
         },
         {
           "label": "Manter orde de imaxes",
-          "description": "Facer aleatoria a orde das portas pero manter as imaxes da cuberta nas súas posicións fixas, empezando polo 1 na parte superior esquerda ata o 24 na parte inferior dereita."
+          "description": "Facer aleatoria a orde das portas pero manter as imaxes da cuberta nas súas posicións fixas, empezando polo 1 na parte superior esquerda ata o 24 na parte inferior dereita.",
+          "options": [
+            {
+              "label": "6 × 4"
+            },
+            {
+              "label": "4 × 6"
+            }
+          ]
         },
         {
           "label": "Modo de deseño",
           "description": "En modo de deseño pódense abrir todas as portas. En caso contrario, as portas só poden abrirse en decembro, no día indicado pola porta e en días posteriores."
+        },
+        {
+          "label": "Keep order of images",
+          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner."
+        },
+        {
+          "label": "Design mode",
+          "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number."
         }
       ]
     },

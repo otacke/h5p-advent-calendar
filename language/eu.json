@@ -120,15 +120,39 @@
       "fields": [
         {
           "label": "Ausazko ordena",
-          "description": "Nahastu ateen ordena. H5P ezarpenetan \"gorde edukiaren egoera\" aukera markatuta badago, orden hori mantenduko da erabiltzailea beranduago bueltatzen denean."
+          "description": "Nahastu ateen ordena. H5P ezarpenetan \"gorde edukiaren egoera\" aukera markatuta badago, orden hori mantenduko da erabiltzailea beranduago bueltatzen denean.",
+          "options": [
+            {
+              "label": "Fixed"
+            },
+            {
+              "label": "Dynamic"
+            }
+          ]
         },
         {
           "label": "Mantendu irudien ordena",
-          "description": "Nahastu ateak, baina mantendu ateen irudiak hasierako kokapenean goiko aldeko ezkerrean 1.a eta azpiko aldeko eskuinaldean 24.a."
+          "description": "Nahastu ateak, baina mantendu ateen irudiak hasierako kokapenean goiko aldeko ezkerrean 1.a eta azpiko aldeko eskuinaldean 24.a.",
+          "options": [
+            {
+              "label": "6 × 4"
+            },
+            {
+              "label": "4 × 6"
+            }
+          ]
         },
         {
           "label": "Diseinatzaile-modua",
           "description": "Diseinatzaile-modua erabiltzean, ate guztiak zabaldu daitezke. Bestela, ateak soilik abenduan eta atearen zenbakiko egunaren ostean ireki ahalko dira."
+        },
+        {
+          "label": "Keep order of images",
+          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner."
+        },
+        {
+          "label": "Design mode",
+          "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number."
         }
       ]
     },

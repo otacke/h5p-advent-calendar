@@ -120,7 +120,31 @@
       "fields": [
         {
           "label": "Random order",
-          "description": "Shuffle the order of the doors. If the \"save content state\" option is set in the H5P settings, that order will stay the same when the user returns later."
+          "description": "Shuffle the order of the doors. If the \"save content state\" option is set in the H5P settings, that order will stay the same when the user returns later.",
+          "options": [
+            {
+              "label": "Fixed"
+            },
+            {
+              "label": "Dynamic"
+            }
+          ]
+        },
+        {
+          "label": "Keep order of images",
+          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner.",
+          "options": [
+            {
+              "label": "6 × 4"
+            },
+            {
+              "label": "4 × 6"
+            }
+          ]
+        },
+        {
+          "label": "Design mode",
+          "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number."
         },
         {
           "label": "Keep order of images",

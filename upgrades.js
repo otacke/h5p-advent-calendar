@@ -22,6 +22,9 @@ H5PUpgrades['H5P.AdventCalendar'] = (function () {
           // Move visual settings to dedicated visuals group
           parameters.visuals = {};
           if (parameters.behaviour) {
+            parameters.modeDoorPlacement = 'fixed'; // Was always fixed before
+            parameters.doorPlacementRatio = '6x4'; // Was always 6x4 before
+
             if (parameters.behaviour.backgroundImage !== undefined) {
               parameters.visuals.backgroundImage = parameters.behaviour.backgroundImage;
               delete parameters.behaviour.backgroundImage;

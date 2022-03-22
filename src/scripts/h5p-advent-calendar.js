@@ -26,6 +26,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         autoplay: false
       },
       behaviour: {
+        modeDoorPlacement: 'fixed',
+        doorPlacementRatio: '6x4',
         randomize: false,
         keepImageOrder: false
       },
@@ -72,6 +74,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         this.backgroundImage.src = source;
       }
     }
+
+    this.columns = [];
 
     // Add day to doors
     this.doors = params.doors.map((door, index) => {
@@ -140,7 +144,6 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.doors.forEach(door => {
       const column = document.createElement('div');
       column.classList.add('h5p-advent-calendar-square');
-      this.table.appendChild(column);
 
       door.door = new AdventCalendarDoor(
         {
@@ -169,6 +172,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         }
       );
       column.appendChild(door.door.getDOM());
+
+      this.columns.push(column);
+      this.table.appendChild(column);
     });
 
     // Add audio button if backgroundMusic is assigned
@@ -253,6 +259,48 @@ export default class AdventCalendar extends H5P.EventDispatcher {
   }
 
   /**
+   * Determine good row-to-column ratio heuristically.
+   * @return {string} Row-to-column ratio.
+   */
+  determineRowColumnRatio() {
+    const containerWidth = (this.container.getBoundingClientRect()).width;
+    const columnsFittingCount = Math.floor(containerWidth / AdventCalendar.COLUMN_WIDTH_MIN);
+
+    if (columnsFittingCount >= 6) {
+      return '6x4';
+    }
+    else if (columnsFittingCount >= 4) {
+      return '4x6';
+    }
+    else if (columnsFittingCount >= 3) {
+      return '3x8';
+    }
+    else if (columnsFittingCount >= 2) {
+      return '2x12';
+    }
+  }
+
+  /**
+   * Set row-to-column ratio.
+   * @param {string} targetRatio Aspired ratio or empty string for none.
+   */
+  setRowColumnRatio(targetRatio) {
+    if (!targetRatio || !['', ...AdventCalendar.ROW_COLUMN_RATIOS].includes(targetRatio)) {
+      return; // no valid value
+    }
+
+    this.columns.forEach(column => {
+      AdventCalendar.ROW_COLUMN_RATIOS.forEach(ratio => {
+        column.classList.remove(`h5p-advent-calendar-row-column-ratio-${ratio}`);
+      });
+
+      if (targetRatio !== '') {
+        column.classList.add(`h5p-advent-calendar-row-column-ratio-${targetRatio}`);
+      }
+    });
+  }
+
+  /**
    * Update door covers.
    */
   updateDoorCovers() {
@@ -309,6 +357,11 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         }
       }
     }
+
+    const ratio = (this.params.behaviour.modeDoorPlacement === 'fixed') ?
+      this.params.behaviour.doorPlacementRatio :
+      this.determineRowColumnRatio();
+    this.setRowColumnRatio(ratio);
 
     clearTimeout(this.resizeTimeout);
     this.resizeTimeout = setTimeout(() => {
@@ -617,3 +670,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     }
   }
 }
+
+/** @constant {string[]} Row column ratios */
+AdventCalendar.ROW_COLUMN_RATIOS = ['6x4', '4x6', '3x8', '2x12'];
+
+/** @constant {number} Minimum column width */
+AdventCalendar.COLUMN_WIDTH_MIN = 120;

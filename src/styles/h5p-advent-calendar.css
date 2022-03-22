@@ -15,9 +15,24 @@
 .h5p-advent-calendar .h5p-advent-calendar-square {
   box-sizing: border-box;
   cursor: pointer;
-  flex-basis: calc(16.666% - 1em);
   margin: 0.5em;
   position: relative;
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-square.h5p-advent-calendar-row-column-ratio-6x4 {
+  flex-basis: calc(16.666% - 1em);
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-square.h5p-advent-calendar-row-column-ratio-4x6 {
+  flex-basis: calc(25% - 1em);
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-square.h5p-advent-calendar-row-column-ratio-3x8 {
+  flex-basis: calc(33.333% - 1em);
+}
+
+.h5p-advent-calendar .h5p-advent-calendar-square.h5p-advent-calendar-row-column-ratio-2x12 {
+  flex-basis: calc(50% - 1em);
 }
 
 .h5p-advent-calendar .h5p-advent-calendar-square {
