@@ -119,8 +119,8 @@
       "description": "Diese Optionen legen fest, wie der Kalender im Detail funktioniert.",
       "fields": [
         {
-          "label": "Zufällige Reihenfolge",
-          "description": "Mische die Reihenfolge der Türchen. Falls die \"save content state\"-Option in den H5P-Einstellungen aktiviert wurde, bleibt die Reihenfolge erhalten, wenn Nutzer:innen später zurückkehren.",
+          "label": "Modus für das Platzieren der Türchen",
+          "description": "Wenn der Designmodus aktiv ist, können alle Türchen geöffnet werden. Andernfalls können die Türchen nur im Dezember an oder nach dem Tag geöffnet werden, der der Türchennummer entspricht.",
           "options": [
             {
               "label": "Fixed"
@@ -131,8 +131,8 @@
           ]
         },
         {
-          "label": "Bilderreihenfolge beibehalten",
-          "description": "Mische die Türchen, aber behalte deren Deckbilder an ihrer eigentlichen Position beginnend bei 1 in der Ecke links oben bis hinunter zur 24 in der Ecke rechts unten.",
+          "label": "Row-to-column ratio",	
+          "description": "Select how many columns and rows the calender should use.",
           "options": [
             {
               "label": "6 × 4"
@@ -143,16 +143,16 @@
           ]
         },
         {
-          "label": "Designmodus",
-          "description": "Wenn der Designmodus aktiv ist, können alle Türchen geöffnet werden. Andernfalls können die Türchen nur im Dezember an oder nach dem Tag geöffnet werden, der der Türchennummer entspricht."
+          "label": "Zufällige Reihenfolge",
+          "description": "Mische die Reihenfolge der Türchen. Falls die \"save content state\"-Option in den H5P-Einstellungen aktiviert wurde, bleibt die Reihenfolge erhalten, wenn Nutzer:innen später zurückkehren."
         },
         {
           "label": "Keep order of images",
           "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner."
         },
         {
-          "label": "Design mode",
-          "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number."
+          "label": "Designmodus",
+          "description": "Wenn der Designmodus aktiv ist, können alle Türchen geöffnet werden. Andernfalls können die Türchen nur im Dezember an oder nach dem Tag geöffnet werden, der der Türchennummer entspricht."
         }
       ]
     },

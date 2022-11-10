@@ -119,8 +119,8 @@
       "description": "These options will let you override behaviour settings.",
       "fields": [
         {
-          "label": "Random order",
-          "description": "Shuffle the order of the doors. If the \"save content state\" option is set in the H5P settings, that order will stay the same when the user returns later.",
+          "label": "Mode for door placement",
+          "description": "Select whether you want to set a fixed number of columns and rows for the doors or if H5P should decide dynamically depending on the available space. Note that the latter may interfere with the position of the background image and custom door cover images that should be at a particular position.",
           "options": [
             {
               "label": "Fixed"
@@ -131,8 +131,8 @@
           ]
         },
         {
-          "label": "Keep order of images",
-          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner.",
+          "label": "Row-to-column ratio",
+          "description": "Select how many columns and rows the calender should use.",
           "options": [
             {
               "label": "6 × 4"
@@ -143,8 +143,8 @@
           ]
         },
         {
-          "label": "Design mode",
-          "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number."
+          "label": "Random order",
+          "description": "Shuffle the order of the doors. If the \"save content state\" option is set in the H5P settings, that order will stay the same when the user returns later."
         },
         {
           "label": "Keep order of images",

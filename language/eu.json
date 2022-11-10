@@ -119,8 +119,8 @@
       "description": "Aukera hauek portaeraren ezarpenak baliogabetzen ahalbidetzen dizute.",
       "fields": [
         {
-          "label": "Ausazko ordena",
-          "description": "Nahastu ateen ordena. H5P ezarpenetan \"gorde edukiaren egoera\" aukera markatuta badago, orden hori mantenduko da erabiltzailea beranduago bueltatzen denean.",
+          "label": "Mode for door placement",
+          "description": "Select whether you want to set a fixed number of columns and rows for the doors or if H5P should decide dynamically depending on the available space. Note that the latter may interfere with the position of the background image and custom door cover images that should be at a particular position.",
           "options": [
             {
               "label": "Fixed"
@@ -131,8 +131,8 @@
           ]
         },
         {
-          "label": "Mantendu irudien ordena",
-          "description": "Nahastu ateak, baina mantendu ateen irudiak hasierako kokapenean goiko aldeko ezkerrean 1.a eta azpiko aldeko eskuinaldean 24.a.",
+          "label": "Row-to-column ratio",
+          "description": "Select how many columns and rows the calender should use.",
           "options": [
             {
               "label": "6 × 4"
@@ -143,16 +143,16 @@
           ]
         },
         {
+          "label": "Ausazko ordena",
+          "description": "Nahastu ateen ordena. H5P ezarpenetan \"gorde edukiaren egoera\" aukera markatuta badago, orden hori mantenduko da erabiltzailea beranduago bueltatzen denean."
+        },
+        {
+          "label": "Mantendu irudien ordena",
+          "description": "Nahastu ateak, baina mantendu ateen irudiak hasierako kokapenean goiko aldeko ezkerrean 1.a eta azpiko aldeko eskuinaldean 24.a."
+        },
+        {
           "label": "Diseinatzaile-modua",
           "description": "Diseinatzaile-modua erabiltzean, ate guztiak zabaldu daitezke. Bestela, ateak soilik abenduan eta atearen zenbakiko egunaren ostean ireki ahalko dira."
-        },
-        {
-          "label": "Keep order of images",
-          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner."
-        },
-        {
-          "label": "Design mode",
-          "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number."
         }
       ]
     },

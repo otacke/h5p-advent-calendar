@@ -119,8 +119,8 @@
       "description": "Estas opcones le permitirán cambiar las configuraciones del comportamiento.",
       "fields": [
         {
-          "label": "Orden aleatorio",
-          "description": "Barajear el orden de las puertas. Si la opción \"guardar estado del contenido\" está activada en las configuraciones de H5P, ese orden se conservará igual cuando el usuario regrese después.",
+          "label": "Mode for door placement",
+          "description": "Select whether you want to set a fixed number of columns and rows for the doors or if H5P should decide dynamically depending on the available space. Note that the latter may interfere with the position of the background image and custom door cover images that should be at a particular position.",
           "options": [
             {
               "label": "Fixed"
@@ -131,8 +131,8 @@
           ]
         },
         {
-          "label": "Conservar orden de imágenes",
-          "description": "Barajear puertas, pero conservar las imágenes de cubierta de puertas en sus posiciones fijas comenzando con 1 en la esquina superior izquierda hasta 24 en la esquina inferior derecha.",
+          "label": "Row-to-column ratio",
+          "description": "Select how many columns and rows the calender should use.",
           "options": [
             {
               "label": "6 × 4"
@@ -143,16 +143,16 @@
           ]
         },
         {
+          "label": "Orden aleatorio",
+          "description": "Barajear el orden de las puertas. Si la opción \"guardar estado del contenido\" está activada en las configuraciones de H5P, ese orden se conservará igual cuando el usuario regrese después."
+        },
+        {
+          "label": "Conservar orden de imágenes",
+          "description": "Barajear puertas, pero conservar las imágenes de cubierta de puertas en sus posiciones fijas comenzando con 1 en la esquina superior izquierda hasta 24 en la esquina inferior derecha."
+        },
+        {
           "label": "Modo diseñador",
           "description": "En modo diseñador, todas las puertas pueden abrirse. En caso contrario, las puertas solamente pueden abrirse en diciembre y después de la fecha respectiva indicada por el número de la puerta."
-        },
-        {
-          "label": "Keep order of images",
-          "description": "Shuffle doors, but keep the door cover images at their fixed positions starting with 1 in the upper left corner down to 24 in the lower right corner."
-        },
-        {
-          "label": "Design mode",
-          "description": "When in design mode, all doors can be opened. Otherwise, the doors can only be opened in December on and after the respective day indicated by the door number."
         }
       ]
     },
