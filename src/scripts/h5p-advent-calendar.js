@@ -1,3 +1,4 @@
+import semantics from './../../semantics.json';
 import AdventCalendarDoor from './h5p-advent-calendar-door';
 import Overlay from './h5p-advent-calendar-overlay';
 import Spinner from './h5p-advent-calendar-spinner';
@@ -56,9 +57,19 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       this.params.a11y[key] = Util.htmlDecode(this.params.a11y[key]);
     }
 
-    // Fill up missing doors
-    while (params.doors.length < 24) {
-      params.doors.push({});
+    // Sanitize doors if user set less than 24
+    const advancedTextField = Util.findSemanticsField('text', semantics);
+    const advancedTextName = advancedTextField?.options[0] ||
+      'H5P.AdvancedText 1.1'; 
+    while (this.params.doors.length < 24) {
+      this.params.doors.push({
+        text: {
+          library: advancedTextName,
+          params: { text: this.params.l10n.nothingToSee },
+          subContentId: H5P.createUUID()
+        },
+        type: 'text'
+      });
     }
 
     const doorImageTemplate = (params.visuals.doorImageTemplate && params.visuals.doorImageTemplate.path) ?
@@ -76,15 +87,15 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     }
 
     this.columns = [];
-
+  
     // Add day to doors
-    this.doors = params.doors.map((door, index) => {
+    this.doors = this.params.doors.map((door, index) => {
       if (doorImageTemplate && !door.doorCover) {
         door.doorCover = doorImageTemplate;
-      }
-
+      }    
+      
       if (!door.type) {
-        door.type = 'text';
+        door.type = 'text';     
         door.text.params.text = this.params.l10n.nothingToSee;
       }
 
@@ -143,7 +154,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     // Doors
     this.doors.forEach(door => {
       const column = document.createElement('div');
-      column.classList.add('h5p-advent-calendar-square');
+      column.classList.add('h5p-advent-calendar-square');  
 
       door.door = new AdventCalendarDoor(
         {
@@ -563,7 +574,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
    * Handler for door loaded. Show calendar after all doors are done.
    */
   handleDoorLoaded() {
-    this.doorsLoaded++;
+    this.doorsLoaded++; 
 
     if (this.doorsLoaded === 24) {
       this.spinner.hide();

@@ -45,6 +45,42 @@ class Util {
       array[j] = x;
     }
   }
+
+  /**
+   * Find semantics field in the semantics structure by name of the field.
+   * Returns first found by depth first search if name used repeatedly.
+   *
+   * @param {string} fieldName Name of the field to find.
+   * @param {object|object[]} semanticsStructure Semantics to look in.
+   * @returns {null|object} Returns the field if found, otherwise null.
+   */
+  static findSemanticsField(fieldName, semanticsStructure) {
+    if (Array.isArray(semanticsStructure)) {
+      for (let i = 0; i < semanticsStructure.length; i++) {
+        const semanticsField = Util.findSemanticsField(fieldName, semanticsStructure[i]);
+        if (semanticsField !== null) {
+          // Return immediately if field is found
+          return semanticsField;
+        }
+      }
+      return null;
+    }
+    else if (semanticsStructure.name === fieldName) {
+      return semanticsStructure;
+    }
+    else if (semanticsStructure.field) {
+      // Process field
+      return Util.findSemanticsField(fieldName, semanticsStructure.field);
+    }
+    else if (semanticsStructure.fields) {
+      // Process fields
+      return Util.findSemanticsField(fieldName, semanticsStructure.fields);
+    }
+    else {
+      // No matching semantics found within known properties and list structures
+      return null;
+    }
+  }
 }
 
 export default Util;
