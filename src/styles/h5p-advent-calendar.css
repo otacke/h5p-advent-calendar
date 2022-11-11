@@ -374,68 +374,51 @@
   width: 13px;
   height: 13px;
 	margin: -280px 60px 54px -34px;
-
-  -webkit-animation: snow 12s infinite cubic-bezier(0.35,0.45,0.39,0.29);
-  -moz-animation: snow 12s infinite cubic-bezier(0.35,0.45,0.39,0.29);
   animation: snow 12s infinite cubic-bezier(0.35,0.45,0.39,0.29);
 
   transform: translate(0, -60px);
 }
 
 .h5p-advent-calendar-snow span:nth-child(5n+5) {
-  -webkit-animation-delay: 1.3s;
-  -moz-animation-delay: 1.3s;
   animation-delay: 1.3s;
 }
 
 .h5p-advent-calendar-snow span:nth-child(3n+2) {
-  -webkit-animation-delay: 1.5s;
-  -moz-animation-delay: 1.5s;
   animation-delay: 1.5s;
 }
 
 .h5p-advent-calendar-snow span:nth-child(2n+5) {
-  -webkit-animation-delay: 1.7s;
-  -moz-animation-delay: 1.7s;
   animation-delay: 1.7s;
 }
 
 .h5p-advent-calendar-snow span:nth-child(3n+10) {
-  -webkit-animation-delay: 2.7s;
-  -moz-animation-delay: 2.7s;
   animation-delay: 2.7s;
 }
 
 .h5p-advent-calendar-snow span:nth-child(7n+2) {
-  -webkit-animation-delay: 3.5s;
-  -moz-animation-delay: 3.5s;
   animation-delay: 3.5s;
 }
 
 .h5p-advent-calendar-snow span:nth-child(4n+5) {
-  -webkit-animation-delay: 5.5s;
-  -moz-animation-delay: 5.5s;
   animation-delay: 5.5s;
 }
 
 .h5p-advent-calendar-snow span:nth-child(3n+7) {
-  -webkit-animation-delay: 8s;
-  -moz-animation-delay: 8s;
   animation-delay: 8s;
 }
 
 @keyframes snow {
   0% {
     opacity: 1;
-    -webkit-transform: translate(0, -100px) rotateZ(0deg);
+    transform: translate(0, -100px) rotateZ(0deg);
   }
   75% {
     opacity: 1;
-    -webkit-transform: translate(100px, 600px) rotateZ(270deg);
+    transform: translate(100px, 600px) rotateZ(270deg);
   }
   100% {
     opacity: 0;
-    -webkit-transform: translate(150px, 800px) rotateZ(360deg);
+    transform: translate(150px, 800px) rotateZ(360deg);
   }
 }
 
