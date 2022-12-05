@@ -257,6 +257,10 @@
   width: 100%;
 }
 
+.h5p-advent-calendar .h5p-advent-calendar-instance-wrapper.h5p-image > img {
+  margin: auto;
+}
+
 .h5p-advent-calendar .h5p-advent-calendar-instance-wrapper.h5p-audio-wrapper {
   min-height: 32px;
   width: 100%;

@@ -60,7 +60,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     // Sanitize doors if user set less than 24
     const advancedTextField = Util.findSemanticsField('text', semantics);
     const advancedTextName = advancedTextField?.options[0] ||
-      'H5P.AdvancedText 1.1'; 
+      'H5P.AdvancedText 1.1';
     while (this.params.doors.length < 24) {
       this.params.doors.push({
         text: {
@@ -87,15 +87,15 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     }
 
     this.columns = [];
-  
+
     // Add day to doors
     this.doors = this.params.doors.map((door, index) => {
       if (doorImageTemplate && !door.doorCover) {
         door.doorCover = doorImageTemplate;
-      }    
-      
+      }
+
       if (!door.type) {
-        door.type = 'text';     
+        door.type = 'text';
         door.text.params.text = this.params.l10n.nothingToSee;
       }
 
@@ -154,7 +154,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     // Doors
     this.doors.forEach(door => {
       const column = document.createElement('div');
-      column.classList.add('h5p-advent-calendar-square');  
+      column.classList.add('h5p-advent-calendar-square');
 
       door.door = new AdventCalendarDoor(
         {
@@ -364,7 +364,20 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       if (this.h5pContainer) {
         // Relative heights (100% on parents) don't work, content still overflows
         if (this.instances[this.currentDayOpened]) {
-          this.instances[this.currentDayOpened].wrapper.style.maxHeight = `calc(${this.h5pContainer.offsetHeight}px - 7em)`;
+          const computedFontSize = parseInt(
+            window.getComputedStyle(this.instances[this.currentDayOpened].wrapper).fontSize
+          ) || 16;
+
+          this.instances[this.currentDayOpened].wrapper.style.maxHeight = `calc(${this.h5pContainer.offsetHeight - 7 * computedFontSize}px)`;
+
+          const instance = this.instances[this.currentDayOpened]?.instance;
+          if (
+            instance?.libraryInfo?.machineName === 'H5P.Image' &&
+            instance.$img?.get(0)
+          ) {
+            this.instances[this.currentDayOpened].wrapper.style.maxWidth =
+            (this.h5pContainer.offsetHeight - 7 * computedFontSize) / instance.$img?.get(0).offsetHeight * instance.$img?.get(0).offsetWidth + 'px';
+          }
         }
       }
     }
@@ -574,7 +587,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
    * Handler for door loaded. Show calendar after all doors are done.
    */
   handleDoorLoaded() {
-    this.doorsLoaded++; 
+    this.doorsLoaded++;
 
     if (this.doorsLoaded === 24) {
       this.spinner.hide();
