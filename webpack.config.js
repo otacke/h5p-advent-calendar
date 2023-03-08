@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
-const isProd = (nodeEnv === 'production');
+const libraryName = process.env.npm_package_name;
 
 module.exports = {
   mode: nodeEnv,
@@ -17,7 +17,7 @@ module.exports = {
     }
   },
   optimization: {
-    minimize: isProd,
+    minimize: nodeEnv === 'production',
     minimizer: [
       new TerserPlugin({
         terserOptions: {
@@ -30,14 +30,14 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'h5p-advent-calendar.css'
+      filename: `${libraryName}.css`
     })
   ],
   entry: {
-    dist: './src/entries/h5p-advent-calendar.js'
+    dist: './src/entries/dist.js'
   },
   output: {
-    filename: 'h5p-advent-calendar.js',
+    filename: `${libraryName}.js`,
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'assets/[name][ext][query]'
   },
@@ -77,5 +77,5 @@ module.exports = {
   stats: {
     colors: true
   },
-  devtool: (isProd) ? undefined : 'eval-cheap-module-source-map'
+  ...(nodeEnv !== 'production' && { devtool: 'eval-cheap-module-source-map' })
 };
