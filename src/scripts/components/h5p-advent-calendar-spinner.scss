@@ -1,0 +1,58 @@
+@keyframes h5p-advent-calendar-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.h5p-advent-calendar-spinner-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .h5p-advent-calendar-spinner {
+    display: inline-block;
+    position: relative;
+    width: 4.5em;
+    height: 4.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    div {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      width: 4em;
+      height: 4em;
+      margin: 0.5em;
+      border: 0.5em solid #999;
+      border-radius: 50%;
+      animation: h5p-advent-calendar-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      border-color: #999 transparent transparent transparent;
+    }
+
+    .h5p-advent-calendar-spinner-circle-head {
+      animation-delay: -0.45s;
+    }
+
+    .h5p-advent-calendar-spinner-circle-neck-upper {
+      animation-delay: -0.3s;
+    }
+
+    .h5p-advent-calendar-spinner-circle-neck-lower {
+      animation-delay: -0.15s;
+    }
+
+    .h5p-advent-calendar-spinner-circle-body {
+      animation-delay: 0;
+    }
+  }
+
+  &.h5p-advent-calendar-spinner-none {
+    display: none;
+  }
+}
+

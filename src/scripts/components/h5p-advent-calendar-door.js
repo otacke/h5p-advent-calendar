@@ -1,16 +1,19 @@
-import Util from './h5p-advent-calendar-util';
+import Util from '@services/h5p-advent-calendar-util';
+import './h5p-advent-calendar-door.scss';
 
 export default class AdventCalendarDoor {
   /**
-   * @constructor
-   * @param {object} params Parameters.
+   * @class
+   * @param {object} [params={}] Parameters.
+   * @param {object} [callbacks={}] Callbacks.
    */
-  constructor(params, callbacks) {
+  constructor(params = {}, callbacks = {}) {
     this.params = params;
 
-    this.callbacks = callbacks || {};
-    this.callbacks.onOpened = callbacks.onOpened || (() => {});
-    this.callbacks.onLoaded = callbacks.onLoaded || (() => {});
+    this.callbacks = Util.extend({
+      onOpened: () => {},
+      onLoaded: () => {}
+    }, callbacks);
 
     this.opened = false;
     this.toLoad = ['door', 'previewImage'];
@@ -108,7 +111,7 @@ export default class AdventCalendarDoor {
       }
     }
     else {
-      this.toLoad = this.toLoad.filter(item => item !== 'door');
+      this.toLoad = this.toLoad.filter((item) => item !== 'door');
     }
 
     // PreviewImage
@@ -132,7 +135,7 @@ export default class AdventCalendarDoor {
       }
     }
     else {
-      this.toLoad = this.toLoad.filter(item => item !== 'previewImage');
+      this.toLoad = this.toLoad.filter((item) => item !== 'previewImage');
       this.previewImage.innerText = params.day;
     }
 
@@ -157,7 +160,8 @@ export default class AdventCalendarDoor {
 
   /**
    * Get door DOM.
-   * @return {HTMLElement} Door DOM.
+   *
+   * @returns {HTMLElement} Door DOM.
    */
   getDOM() {
     return this.container;
@@ -165,6 +169,7 @@ export default class AdventCalendarDoor {
 
   /**
    * Set door cover.
+   *
    * @param {object} params Parameters.
    * @param {Image} [params.image] HTML image element.
    * @param {string} [params.image.src] Image src.
@@ -204,6 +209,7 @@ export default class AdventCalendarDoor {
 
   /**
    * Handle open event by space/enter.
+   *
    * @param {Event} event Event.
    */
   handleKeypress(event) {
@@ -215,6 +221,7 @@ export default class AdventCalendarDoor {
 
   /**
    * Handle open event by click.
+   *
    * @param {Event} event Event.
    */
   handleClick(event) {
@@ -236,9 +243,11 @@ export default class AdventCalendarDoor {
 
   /**
    * Handle loading of items to determine when door loading is loaded.
+   *
+   * @param {string} itemName Name of item to be loaded.
    */
   handleLoaded(itemName) {
-    this.toLoad = this.toLoad.filter(item => item !== itemName);
+    this.toLoad = this.toLoad.filter((item) => item !== itemName);
 
     if (this.toLoad.length === 0) {
       this.callbacks.onLoaded();
@@ -259,6 +268,7 @@ export default class AdventCalendarDoor {
 
   /**
    * Open door.
+   *
    * @param {object} params Parameters.
    * @param {boolean} [params.skipCallback] If true, callback will be skipped.
    */
@@ -293,7 +303,8 @@ export default class AdventCalendarDoor {
 
   /**
    * Determine whether the door is open.
-   * @return {boolean} True, if door is open. Else false.
+   *
+   * @returns {boolean} True, if door is open. Else false.
    */
   isOpen() {
     return this.opened;
@@ -301,7 +312,8 @@ export default class AdventCalendarDoor {
 
   /**
    * Determine whether the door can be opened.
-   * @return {boolean} True, if door can be opened. Else false.
+   *
+   * @returns {boolean} True, if door can be opened. Else false.
    */
   canBeOpened() {
     if (this.locked) {

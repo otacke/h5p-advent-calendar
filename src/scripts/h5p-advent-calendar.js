@@ -1,17 +1,17 @@
-import semantics from './../../semantics.json';
-import AdventCalendarDoor from './h5p-advent-calendar-door';
-import Overlay from './h5p-advent-calendar-overlay';
-import Spinner from './h5p-advent-calendar-spinner';
-import Util from './h5p-advent-calendar-util';
+import semantics from '@root/semantics.json';
+import AdventCalendarDoor from '@scripts/components/h5p-advent-calendar-door';
+import Overlay from '@scripts/components/h5p-advent-calendar-overlay';
+import Spinner from '@scripts/components/h5p-advent-calendar-spinner';
+import Util from '@services/h5p-advent-calendar-util';
 
 export default class AdventCalendar extends H5P.EventDispatcher {
   /**
-   * @constructor
-   * @param {object} params Parameters passed by the editor.
+   * @class
+   * @param {object} [params={}] Parameters passed by the editor.
    * @param {number} contentId Content's id.
    * @param {object} [extras] Saved state, metadata, etc.
    */
-  constructor(params, contentId, extras = {}) {
+  constructor(params = {}, contentId, extras = {}) {
     super();
 
     this.params = Util.extend({
@@ -72,11 +72,15 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       });
     }
 
-    const doorImageTemplate = (params.visuals.doorImageTemplate && params.visuals.doorImageTemplate.path) ?
-      params.visuals.doorImageTemplate : null;
+    const doorImageTemplate = (params.visuals.doorImageTemplate?.path) ?
+      params.visuals.doorImageTemplate :
+      null;
 
     if (params.visuals?.backgroundImage?.path) {
-      const source = H5P.getPath(params.visuals.backgroundImage.path, contentId);
+      const source = H5P.getPath(
+        params.visuals.backgroundImage.path, contentId
+      );
+
       if (source) {
         this.backgroundImage = document.createElement('img');
         this.backgroundImage.addEventListener('load', () => {
@@ -107,7 +111,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     // Check for previous state and shuffling
     if (extras.previousState && Array.isArray(extras.previousState)) {
-      this.doors = extras.previousState.map(state => {
+      this.doors = extras.previousState.map((state) => {
         const door = this.doors[state.day - 1];
         door.open = state.open;
         return door;
@@ -117,7 +121,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       Util.shuffleArray(this.doors);
     }
 
-    const coverPool = this.doors.map(door => ({
+    const coverPool = this.doors.map((door) => ({
       day: door.day,
       doorCover: door.content.doorCover
     }));
@@ -125,7 +129,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     // Reassign door covers to fixed positions
     if (params.behaviour.keepImageOrder) {
       this.doors.forEach((door, index) => {
-        door.content.doorCover = (coverPool.filter(door => door.day === index + 1)[0]).doorCover;
+        door.content.doorCover =
+          (coverPool.filter((door) => door.day === index + 1)[0]).doorCover;
       });
     }
 
@@ -152,7 +157,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.container.appendChild(this.table);
 
     // Doors
-    this.doors.forEach(door => {
+    this.doors.forEach((door) => {
       const column = document.createElement('div');
       column.classList.add('h5p-advent-calendar-square');
 
@@ -190,7 +195,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     // Add audio button if backgroundMusic is assigned
     if (params.audio.backgroundMusic) {
-      this.backgroundMusic = this.createAudio(params.audio.backgroundMusic, contentId);
+      this.backgroundMusic = this.createAudio(
+        params.audio.backgroundMusic, contentId
+      );
 
       this.buttonAudio = document.createElement('button');
       this.buttonAudio.classList.add('h5p-advent-calendar-audio-button');
@@ -260,7 +267,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Attach library to wrapper.
-   * @param {jQuery} $wrapper Content's container.
+   *
+   * @param {H5P.jQuery} $wrapper Content's container.
    */
   attach($wrapper) {
     $wrapper.get(0).classList.add('h5p-advent-calendar');
@@ -271,11 +279,14 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Determine good row-to-column ratio heuristically.
-   * @return {string} Row-to-column ratio.
+   *
+   * @returns {string} Row-to-column ratio.
    */
   determineRowColumnRatio() {
     const containerWidth = (this.container.getBoundingClientRect()).width;
-    const columnsFittingCount = Math.floor(containerWidth / AdventCalendar.COLUMN_WIDTH_MIN);
+    const columnsFittingCount = Math.floor(
+      containerWidth / AdventCalendar.COLUMN_WIDTH_MIN
+    );
 
     if (columnsFittingCount >= 6) {
       return '6x4';
@@ -289,10 +300,13 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     else if (columnsFittingCount >= 2) {
       return '2x12';
     }
+
+    return '6x4'; // Fallback
   }
 
   /**
    * Set row-to-column ratio.
+   *
    * @param {string} targetRatio Aspired ratio or empty string for none.
    */
   setRowColumnRatio(targetRatio) {
@@ -300,8 +314,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       return; // no valid value
     }
 
-    this.columns.forEach(column => {
-      AdventCalendar.ROW_COLUMN_RATIOS.forEach(ratio => {
+    this.columns.forEach((column) => {
+      AdventCalendar.ROW_COLUMN_RATIOS.forEach((ratio) => {
         column.classList.remove(`h5p-advent-calendar-row-column-ratio-${ratio}`);
       });
 
@@ -338,7 +352,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       containerRect.height :
       this.backgroundImage.naturalHeight / this.backgroundImage.naturalWidth * containerRect.width;
 
-    this.doors.forEach(door => {
+    this.doors.forEach((door) => {
       door.door.setDoorCover({
         image: this.backgroundImage,
         styles: {
@@ -395,10 +409,11 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Get current state for H5P core.
-   * @return {object} Current state.
+   *
+   * @returns {object} Current state.
    */
   getCurrentState() {
-    return this.doors.map(door => ({
+    return this.doors.map((door) => ({
       day: door.day,
       open: door.door.isOpen()
     }));
@@ -406,15 +421,16 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Handle overlay opened.
+   *
    * @param {number} day Day on door.
-   * @param {number} {delay=1000} Delay for overlay to be shown.
+   * @param {number} [delay=1000] Delay for overlay to be shown.
    */
   handleOverlayOpened(day, delay = 1000) {
-    this.doors.forEach(door => door.door.lock()); // Prevent multiple overlay calls
+    this.doors.forEach((door) => door.door.lock()); // Prevent multiple overlay calls
     this.currentDayOpened = day;
 
     // Allow to add custom styling, no lookahead in CSS
-    const params = this.doors.filter(door => door.day === day)[0];
+    const params = this.doors.filter((door) => door.day === day)[0];
     this.overlay.setModifierClass(`h5p-advent-calendar-content-type-${params.content.type}`);
 
     // Create instance if not done before
@@ -424,7 +440,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
       if (!params.content[params.content.type]) {
         // No content defined for this door
-        this.doors.forEach(door => door.door.unlock());
+        this.doors.forEach((door) => door.door.unlock());
         params.door.focus(); // Focus current door.
 
         return;
@@ -541,7 +557,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         }
       }
 
-      this.doors.forEach(door => door.door.unlock());
+      this.doors.forEach((door) => door.door.unlock());
     }, delay);
   }
 
@@ -558,11 +574,12 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     }
 
     // Give focus back to previously opened door
-    this.doors.filter(door => door.day === this.currentDayOpened)[0].door.focus();
+    this.doors.filter((door) => door.day === this.currentDayOpened)[0].door.focus();
   }
 
   /**
    * Handle media in overlay.
+   *
    * @param {string} state State the media are in.
    */
   handleOverlayMedia(state) {
@@ -598,8 +615,10 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Create audio elements.
+   *
    * @param {object} params Params.
-   * @return {object} Audio element.
+   * @param {number} contentId Content id.
+   * @returns {object} Audio element.
    */
   createAudio(params, contentId) {
     if (!params || params.length < 1 || !params[0].path) {
@@ -622,8 +641,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Toggle audio button mute state.
-   * @param {boolean} [muted] If set, will override toggling.
-   * @param {boolean} True, if muted, else false.
+   *
+   * @param {boolean} muted If set, will override toggling.
+   * @returns {boolean|undefined} True, if muted, else false.
    */
   toggleButtonAudio(muted) {
     if (!this.buttonAudio) {

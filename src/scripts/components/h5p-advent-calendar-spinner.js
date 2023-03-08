@@ -1,7 +1,10 @@
+import './h5p-advent-calendar-spinner.scss';
+
 /** Class for an activity indicator aka spinner */
 class Spinner {
   /**
    * Constructor.
+   *
    * @param {string} classNameBase Class name base to define spinner visuals.
    */
   constructor(classNameBase) {
@@ -35,7 +38,8 @@ class Spinner {
 
   /**
    * Get the DOM.
-   * @return {HTMLElement} Spinner container.
+   *
+   * @returns {HTMLElement} Spinner container.
    */
   getDOM() {
     return this.container;
