@@ -5,9 +5,9 @@ import './h5p-advent-calendar-overlay.scss';
 export default class Overlay {
   /**
    * @class
-   * @param {object} [params={}] Parameters.
+   * @param {object} [params] Parameters.
    * @param {HTMLElement} params.content Content to set.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks = {}) {
     this.params = Util.extend({
@@ -75,7 +75,6 @@ export default class Overlay {
 
   /**
    * Return the DOM for this class.
-   *
    * @returns {HTMLElement} DOM for this class.
    */
   getDOM() {
@@ -84,7 +83,6 @@ export default class Overlay {
 
   /**
    * Set overlay content.
-   *
    * @param {HTMLElement} content Content to set.
    */
   setContent(content) {
@@ -96,9 +94,8 @@ export default class Overlay {
 
   /**
    * Set an extra class that can be used for CSS styling.
-   *
    * @param {string} className Class name.
-   * @param {boolean} [clear=true] If false, will not erase all other extra classes.
+   * @param {boolean} [clear] If false, will not erase all other extra classes.
    */
   setModifierClass(className, clear = true) {
     if (clear) {
@@ -117,7 +114,6 @@ export default class Overlay {
 
   /**
    * Trap focus in overlay.
-   *
    * @param {Event} event Focus event.
    */
   trapFocus(event) {
@@ -138,7 +134,6 @@ export default class Overlay {
 
   /**
    * Check whether an HTML element is a child of the overlay.
-   *
    * @param {HTMLElement} element Element.
    * @returns {boolean} True, if element is a child.
    */

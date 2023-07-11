@@ -4,7 +4,6 @@ import './h5p-advent-calendar-spinner.scss';
 class Spinner {
   /**
    * Constructor.
-   *
    * @param {string} classNameBase Class name base to define spinner visuals.
    */
   constructor(classNameBase) {
@@ -38,7 +37,6 @@ class Spinner {
 
   /**
    * Get the DOM.
-   *
    * @returns {HTMLElement} Spinner container.
    */
   getDOM() {

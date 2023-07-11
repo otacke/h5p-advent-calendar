@@ -2,7 +2,6 @@
 class Util {
   /**
    * Extend an array just like JQuery's extend.
-   *
    * @returns {object} Merged objects.
    */
   static extend() {
@@ -26,7 +25,6 @@ class Util {
 
   /**
    * Retrieve true string from HTML encoded string.
-   *
    * @param {string} input Input string.
    * @returns {string} Output string.
    */
@@ -37,7 +35,6 @@ class Util {
 
   /**
    * Shuffle array in place.
-   *
    * @param {object[]} array Array.
    */
   static shuffleArray(array) {
@@ -53,7 +50,6 @@ class Util {
   /**
    * Find semantics field in the semantics structure by name of the field.
    * Returns first found by depth first search if name used repeatedly.
-   *
    * @param {string} fieldName Name of the field to find.
    * @param {object|object[]} semanticsStructure Semantics to look in.
    * @returns {null|object} Returns the field if found, otherwise null.

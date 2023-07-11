@@ -7,7 +7,7 @@ import Util from '@services/h5p-advent-calendar-util';
 export default class AdventCalendar extends H5P.EventDispatcher {
   /**
    * @class
-   * @param {object} [params={}] Parameters passed by the editor.
+   * @param {object} [params] Parameters passed by the editor.
    * @param {number} contentId Content's id.
    * @param {object} [extras] Saved state, metadata, etc.
    */
@@ -267,7 +267,6 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Attach library to wrapper.
-   *
    * @param {H5P.jQuery} $wrapper Content's container.
    */
   attach($wrapper) {
@@ -279,7 +278,6 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Determine good row-to-column ratio heuristically.
-   *
    * @returns {string} Row-to-column ratio.
    */
   determineRowColumnRatio() {
@@ -306,7 +304,6 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Set row-to-column ratio.
-   *
    * @param {string} targetRatio Aspired ratio or empty string for none.
    */
   setRowColumnRatio(targetRatio) {
@@ -409,7 +406,6 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Get current state for H5P core.
-   *
    * @returns {object} Current state.
    */
   getCurrentState() {
@@ -421,9 +417,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Handle overlay opened.
-   *
    * @param {number} day Day on door.
-   * @param {number} [delay=1000] Delay for overlay to be shown.
+   * @param {number} [delay] Delay for overlay to be shown.
    */
   handleOverlayOpened(day, delay = 1000) {
     this.doors.forEach((door) => door.door.lock()); // Prevent multiple overlay calls
@@ -579,7 +574,6 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Handle media in overlay.
-   *
    * @param {string} state State the media are in.
    */
   handleOverlayMedia(state) {
@@ -615,7 +609,6 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Create audio elements.
-   *
    * @param {object} params Params.
    * @param {number} contentId Content id.
    * @returns {object} Audio element.
@@ -641,7 +634,6 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Toggle audio button mute state.
-   *
    * @param {boolean} muted If set, will override toggling.
    * @returns {boolean|undefined} True, if muted, else false.
    */

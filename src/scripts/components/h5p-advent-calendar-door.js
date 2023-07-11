@@ -4,8 +4,8 @@ import './h5p-advent-calendar-door.scss';
 export default class AdventCalendarDoor {
   /**
    * @class
-   * @param {object} [params={}] Parameters.
-   * @param {object} [callbacks={}] Callbacks.
+   * @param {object} [params] Parameters.
+   * @param {object} [callbacks] Callbacks.
    */
   constructor(params = {}, callbacks = {}) {
     this.params = params;
@@ -160,7 +160,6 @@ export default class AdventCalendarDoor {
 
   /**
    * Get door DOM.
-   *
    * @returns {HTMLElement} Door DOM.
    */
   getDOM() {
@@ -169,7 +168,6 @@ export default class AdventCalendarDoor {
 
   /**
    * Set door cover.
-   *
    * @param {object} params Parameters.
    * @param {Image} [params.image] HTML image element.
    * @param {string} [params.image.src] Image src.
@@ -209,7 +207,6 @@ export default class AdventCalendarDoor {
 
   /**
    * Handle open event by space/enter.
-   *
    * @param {Event} event Event.
    */
   handleKeypress(event) {
@@ -221,7 +218,6 @@ export default class AdventCalendarDoor {
 
   /**
    * Handle open event by click.
-   *
    * @param {Event} event Event.
    */
   handleClick(event) {
@@ -243,7 +239,6 @@ export default class AdventCalendarDoor {
 
   /**
    * Handle loading of items to determine when door loading is loaded.
-   *
    * @param {string} itemName Name of item to be loaded.
    */
   handleLoaded(itemName) {
@@ -268,7 +263,6 @@ export default class AdventCalendarDoor {
 
   /**
    * Open door.
-   *
    * @param {object} params Parameters.
    * @param {boolean} [params.skipCallback] If true, callback will be skipped.
    */
@@ -303,7 +297,6 @@ export default class AdventCalendarDoor {
 
   /**
    * Determine whether the door is open.
-   *
    * @returns {boolean} True, if door is open. Else false.
    */
   isOpen() {
@@ -312,7 +305,6 @@ export default class AdventCalendarDoor {
 
   /**
    * Determine whether the door can be opened.
-   *
    * @returns {boolean} True, if door can be opened. Else false.
    */
   canBeOpened() {
