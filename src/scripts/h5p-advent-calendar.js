@@ -405,10 +405,23 @@ export default class AdventCalendar extends H5P.EventDispatcher {
   }
 
   /**
+   * Determine whether the task was answered already.
+   * @returns {boolean} True if answer was given by user, else false.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
+   */
+  getAnswerGiven() {
+    return this.doors.some((door) => door.door.isOpen());
+  }
+
+  /**
    * Get current state for H5P core.
    * @returns {object} Current state.
    */
   getCurrentState() {
+    if (!this.getAnswerGiven()) {
+      return; // Nothing relevant to store. If ever resetTask is implemented, ensure to clear previous states in DB
+    }
+
     return this.doors.map((door) => ({
       day: door.day,
       open: door.door.isOpen()
