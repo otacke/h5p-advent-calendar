@@ -415,7 +415,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
   /**
    * Get current state for H5P core.
-   * @returns {object} Current state.
+   * @returns {object|undefined} Current state.
    */
   getCurrentState() {
     if (!this.getAnswerGiven()) {
