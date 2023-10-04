@@ -1,32 +1,39 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+import { dirname, resolve as _resolve, join } from 'path';
+import { fileURLToPath } from 'url';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import TerserPlugin from 'terser-webpack-plugin'; // Provided by webpack
 
-const nodeEnv = process.env.NODE_ENV || 'development';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const mode = process.argv.includes('--mode=production') ?
+  'production' :
+  'development';
 const libraryName = process.env.npm_package_name;
 
-module.exports = {
-  mode: nodeEnv,
+export default {
+  mode: mode,
   resolve: {
     alias: {
-      '@assets': path.resolve(__dirname, 'assets'),
-      '@scripts': path.resolve(__dirname, 'src/scripts'),
-      '@services': path.resolve(__dirname, 'src/scripts/services'),
-      '@styles': path.resolve(__dirname, 'src/styles'),
-      '@root': path.resolve(__dirname, '.')
+      '@assets': _resolve(__dirname, 'assets'),
+      '@components': _resolve(__dirname, 'src/scripts/components'),
+      '@root': _resolve(__dirname, '.'),
+      '@scripts': _resolve(__dirname, 'src/scripts'),
+      '@services': _resolve(__dirname, 'src/scripts/services'),
+      '@styles': _resolve(__dirname, 'src/styles')
     }
   },
   optimization: {
-    minimize: nodeEnv === 'production',
+    minimize: mode === 'production',
     minimizer: [
       new TerserPlugin({
         terserOptions: {
-          compress:{
+          compress: {
             drop_console: true,
           }
         }
-      }),
-    ],
+      })
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -38,10 +45,10 @@ module.exports = {
   },
   output: {
     filename: `${libraryName}.js`,
-    path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'assets/[name][ext][query]'
+    path: _resolve(__dirname, 'dist'),
+    clean: true
   },
-  target: ['web', 'es5'], // Damn you, IE11!
+  target: ['browserslist'],
   module: {
     rules: [
       {
@@ -58,18 +65,22 @@ module.exports = {
               publicPath: ''
             }
           },
-          { loader: 'css-loader' },
-          { loader: 'sass-loader' }
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
         ]
       },
       {
         test: /\.svg|\.jpg|\.png$/,
-        include: path.join(__dirname, 'src/images'),
+        include: join(__dirname, 'src/images'),
         type: 'asset/resource'
       },
       {
         test: /\.woff$/,
-        include: path.join(__dirname, 'src/fonts'),
+        include: join(__dirname, 'src/fonts'),
         type: 'asset/resource'
       }
     ]
@@ -77,5 +88,5 @@ module.exports = {
   stats: {
     colors: true
   },
-  ...(nodeEnv !== 'production' && { devtool: 'eval-cheap-module-source-map' })
+  ...(mode !== 'production' && { devtool: 'eval-cheap-module-source-map' })
 };

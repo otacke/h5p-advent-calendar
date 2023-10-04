@@ -1,8 +1,8 @@
 import semantics from '@root/semantics.json';
-import AdventCalendarDoor from '@scripts/components/h5p-advent-calendar-door';
-import Overlay from '@scripts/components/h5p-advent-calendar-overlay';
-import Spinner from '@scripts/components/h5p-advent-calendar-spinner';
-import Util from '@services/h5p-advent-calendar-util';
+import AdventCalendarDoor from '@components/h5p-advent-calendar-door.js';
+import Overlay from '@components/h5p-advent-calendar-overlay.js';
+import Spinner from '@components/h5p-advent-calendar-spinner.js';
+import Util from '@services/h5p-advent-calendar-util.js';
 
 export default class AdventCalendar extends H5P.EventDispatcher {
   /**

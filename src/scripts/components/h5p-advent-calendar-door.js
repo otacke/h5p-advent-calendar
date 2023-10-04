@@ -1,4 +1,4 @@
-import Util from '@services/h5p-advent-calendar-util';
+import Util from '@services/h5p-advent-calendar-util.js';
 import './h5p-advent-calendar-door.scss';
 
 export default class AdventCalendarDoor {
