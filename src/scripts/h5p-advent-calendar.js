@@ -500,7 +500,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
             autoplay: params.content.autoplay || false,
             loop: false
           }
-        }, this.contentId);
+        }, this.contentId, {});
 
         instance.attach(H5P.jQuery(instanceWrapper));
 
