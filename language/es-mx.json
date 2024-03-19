@@ -1,14 +1,14 @@
 {
   "semantics": [
     {
-      "label": "Mode for door images",
-      "description": "Select whether you want to set each custom door image yourself or let H5P do the work for you based on the calendar background image set in the behavioural settings.",
+      "label": "Modo para imágenes de puerta",
+      "description": "Seleccionar si usted quiere configurar cada imagen de puerta personalizada usted mismo o quiere permitir que H5P haga el trabajo por usted basándose en la imagen del fondo del calendario configurada en las configuraciones del comportamiento.",
       "options": [
         {
-          "label": "I want to set each door image myself"
+          "label": "Quiero configurar yo mismo cada imagen de puerta"
         },
         {
-          "label": "H5P shall set the door images based on the background image"
+          "label": "H5P pondrá las imágenes de la puerta basándose en la imagen del fondo"
         }
       ]
     },
@@ -19,7 +19,7 @@
         "fields": [
           {
             "label": "Tipo de contenido",
-            "description": "Tipo de contenido que opcionalmente saldrá cuando la puerta es abierta.",
+            "description": "Tipo de contenido que opcionalmente saldrá cuando la puerta sea abierta.",
             "options": [
               {
                 "label": "Audio"
@@ -73,8 +73,8 @@
       ]
     },
     {
-      "label": "Visual settings",
-      "description": "These options will let you configure the visual appearance.",
+      "label": "Configuraciones visuales",
+      "description": "Estas opciones le permitirán configurar la apariencia visual.",
       "fields": [
         {
           "label": "Imagen del fondo del calendario"
@@ -97,42 +97,42 @@
         },
         {
           "label": "Que caiga nieve",
-          "description": "Añadirá caída de nieve al frente del calendario. Nunca llueve en el Sur de Californa, Nunca cae nieve en IE11."
+          "description": "Añadirá caída de nieve al frente del calendario. Nunca llueve en el Sur de California, Nunca cae nieve en IE11."
         }
       ]
     },
     {
-      "label": "Audio settings",
-      "description": "These options will let you configure the audio appearance.",
+      "label": "Configuraciones de audio",
+      "description": "Estas opciones le permitirán configurar la apariencia del audio.",
       "fields": [
         {
           "label": "Música de fondo"
         },
         {
           "label": "Auto-reproducir música de fondo",
-          "description": "Si se activa, la musica de fondo se reproducirá automáticamente una vez que se abra el contenido. Por favor tenga en cuenta: Las políticas para medios de algunos navegadores podrían impedir la auto-reproducción."
+          "description": "Si se activa, la música de fondo se reproducirá automáticamente una vez que se abra el contenido. Por favor tenga en cuenta: Las políticas para medios de algunos navegadores podrían impedir la auto-reproducción."
         }
       ]
     },
     {
       "label": "Configuraciones del comportamiento",
-      "description": "Estas opcones le permitirán cambiar las configuraciones del comportamiento.",
+      "description": "Estas opciones le permitirán cambiar las configuraciones del comportamiento.",
       "fields": [
         {
-          "label": "Mode for door placement",
-          "description": "Select whether you want to set a fixed number of columns and rows for the doors or if H5P should decide dynamically depending on the available space. Note that the latter may interfere with the position of the background image and custom door cover images that should be at a particular position.",
+          "label": "Modo para colocación de puerta",
+          "description": "Seleccionar si es que usted quiere configurar un número fijo de columnas y filas para las puertas o si H5P debería decidir dinámicamente dependiendo del espacio disponible. Tenga en cuenta que esto último podría interferir con la posición de la imagen del fondo y con imágenes que cubren la puerta personalizada las cuales deberían estar en una posición particular.",
           "options": [
             {
-              "label": "Fixed"
+              "label": "Fija"
             },
             {
-              "label": "Dynamic"
+              "label": "Dinámica"
             }
           ]
         },
         {
-          "label": "Row-to-column ratio",
-          "description": "Select how many columns and rows the calender should use.",
+          "label": "Proporción fila-a-columna",
+          "description": "Seleccionar cuantas columnas y filas debería usar el calendario.",
           "options": [
             {
               "label": "6 × 4"
@@ -161,7 +161,7 @@
       "fields": [
         {
           "label": "Nada para ver",
-          "default": "¡Aquí no hay nada para ver!\ud83c\udf84"
+          "default": "¡Aquí no hay nada para ver!🎄"
         },
         {
           "label": "Dummy",
@@ -194,8 +194,8 @@
           "default": "Activar audio"
         },
         {
-          "label": "Cerrrar ventana",
-          "default": "Cerrrar ventana"
+          "label": "Cerrar ventana",
+          "default": "Cerrar ventana"
         }
       ]
     }
