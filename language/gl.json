@@ -1,14 +1,14 @@
 {
   "semantics": [
     {
-      "label": "Mode for door images",
-      "description": "Select whether you want to set each custom door image yourself or let H5P do the work for you based on the calendar background image set in the behavioural settings.",
+      "label": "Modo para imaxes de portas",
+      "description": "Selecciona se queres configurar cada imaxe de porta personalizada por ti mesmo ou deixar que H5P faga o traballo por ti en función da imaxe de fondo do calendario definida na configuración do comportamento.",
       "options": [
         {
-          "label": "I want to set each door image myself"
+          "label": "Quero configurar cada imaxe de porta eu mesmo"
         },
         {
-          "label": "H5P shall set the door images based on the background image"
+          "label": "H5P establecerá as imaxes da porta en función da imaxe de fondo"
         }
       ]
     },
@@ -73,8 +73,8 @@
       ]
     },
     {
-      "label": "Visual settings",
-      "description": "These options will let you configure the visual appearance.",
+      "label": "Configuración visual",
+      "description": "Estas opcións permitiranche configurar o aspecto visual.",
       "fields": [
         {
           "label": "Imaxe de fondo do calendario"
@@ -102,8 +102,8 @@
       ]
     },
     {
-      "label": "Audio settings",
-      "description": "These options will let you configure the audio appearance.",
+      "label": "Configuración de son",
+      "description": "Estas opcións permítenche configurar a aparencia do audio.",
       "fields": [
         {
           "label": "Música de fondo"
@@ -119,20 +119,20 @@
       "description": "Estas opcións permiten modificar a configuración do comportamento.",
       "fields": [
         {
-          "label": "Mode for door placement",
-          "description": "Select whether you want to set a fixed number of columns and rows for the doors or if H5P should decide dynamically depending on the available space. Note that the latter may interfere with the position of the background image and custom door cover images that should be at a particular position.",
+          "label": "Modo de colocación da porta",
+          "description": "Seleccione se desexa establecer un número fixo de columnas e filas para as portas ou se H5P debe decidir de forma dinámica dependendo do espazo dispoñible. Teña en conta que isto último pode interferir coa posición da imaxe de fondo e das imaxes de portada personalizadas que deberían estar nunha posición determinada.",
           "options": [
             {
-              "label": "Fixed"
+              "label": "Fixo"
             },
             {
-              "label": "Dynamic"
+              "label": "Dinámico"
             }
           ]
         },
         {
-          "label": "Row-to-column ratio",
-          "description": "Select how many columns and rows the calender should use.",
+          "label": "Relación fila a columna",
+          "description": "Seleccione cantas columnas e filas debe usar o calendario.",
           "options": [
             {
               "label": "6 × 4"
@@ -161,7 +161,7 @@
       "fields": [
         {
           "label": "Nada que ver",
-          "default": "Non hai nada que ver aquí!\ud83c\udf84"
+          "default": "Non hai nada que ver aquí!🎄"
         },
         {
           "label": "Moneco",
