@@ -18,3 +18,4 @@ CONTRIBUTING.md
 package.json
 package-lock.json
 worknotes
+eslint.config.js
