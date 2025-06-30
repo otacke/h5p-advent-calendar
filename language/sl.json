@@ -119,8 +119,8 @@
       "description": "Nastavitve omogočajo nadzor nad interakcijo aktivnosti za udeležence.",
       "fields": [
         {
-          "label": "Mode for door placement",
-          "description": "Select whether you want to set a fixed number of columns and rows for the doors or if H5P should decide dynamically depending on the available space. Note that the latter may interfere with the position of the background image and custom door cover images that should be at a particular position.",
+          "label": "Način postavitve vrat",
+          "description": "Nastavitev določa fiksno število stolpcev in vrstic za vrata ali dinamično postavitev glede na razpoložljiv prostor. Upoštevajte, da lahko dinamična postavitev vpliva na videz ozadja in slik na vratih.",
           "options": [
             {
               "label": "Statično"
@@ -131,8 +131,8 @@
           ]
         },
         {
-          "label": "Row-to-column ratio",
-          "description": "Select how many columns and rows the calender should use.",
+          "label": "Razmerje vrstic in stolpcev",
+          "description": "Izberite število stolpcev in vrstic za postavitev koledarja.",
           "options": [
             {
               "label": "6 × 4"
