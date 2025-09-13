@@ -1,6 +1,9 @@
 import Util from '@services/h5p-advent-calendar-util.js';
 import './h5p-advent-calendar-door.scss';
 
+/** @constant {number} DECEMBER_NUMBER December month number. Starts at 0. */
+const DECEMBER_NUMBER = 11;
+
 export default class AdventCalendarDoor {
   /**
    * @class
@@ -12,7 +15,7 @@ export default class AdventCalendarDoor {
 
     this.callbacks = Util.extend({
       onOpened: () => {},
-      onLoaded: () => {}
+      onLoaded: () => {},
     }, callbacks);
 
     this.opened = false;
@@ -21,6 +24,7 @@ export default class AdventCalendarDoor {
     // Square content
     this.container = document.createElement('div');
     this.container.classList.add('h5p-advent-calendar-square-content');
+    // eslint-disable-next-line @stylistic/js/max-len
     this.container.classList.add(`h5p-advent-calendar-color-scheme-${AdventCalendarDoor.colorSchemeNames[params.day % AdventCalendarDoor.colorSchemeNames.length]}`);
     if (params.hideDoorBorder) {
       this.container.classList.add('h5p-advent-calendar-hide-door-border');
@@ -116,7 +120,10 @@ export default class AdventCalendarDoor {
 
     // PreviewImage
     this.previewImage = document.createElement('button');
-    this.previewImage.setAttribute('aria-label', this.params.a11y.content.replace('@door', `${this.params.a11y.door} ${this.params.day}.`));
+    this.previewImage.setAttribute(
+      'aria-label',
+      this.params.a11y.content.replace('@door', `${this.params.a11y.door} ${this.params.day}.`),
+    );
     this.previewImage.setAttribute('tabIndex', -1);
     this.previewImage.classList.add('h5p-advent-calendar-preview-image');
     this.previewImage.classList.add(`h5p-advent-calendar-${params.content.type}-symbol`);
@@ -146,14 +153,14 @@ export default class AdventCalendarDoor {
     // Execute open action on click on previewImage
     this.previewImage.addEventListener('click', () => {
       this.open({
-        delay: 0
+        delay: 0,
       });
     });
 
     // Door may have been open in previous state
     if (params.open) {
       this.open({
-        skipCallback: true
+        skipCallback: true,
       });
     }
   }
@@ -179,7 +186,7 @@ export default class AdventCalendarDoor {
   setDoorCover(params = {}) {
     params = Util.extend({
       styles: {},
-      offset: { left: 0, top: 0 }
+      offset: { left: 0, top: 0 },
     }, params);
     params.image = params.image || { src: '' };
 
@@ -191,12 +198,16 @@ export default class AdventCalendarDoor {
 
     // Set background offset based of door position
     const doorLeftRect = this.doorLeft.getBoundingClientRect();
-    this.doorLeft.style.backgroundPosition = `left ${params.offset.left - doorLeftRect.left}px top ${params.offset.top - doorLeftRect.top}px`;
+    let left = params.offset.left - doorLeftRect.left;
+    let top = params.offset.top - doorLeftRect.top;
+    this.doorLeft.style.backgroundPosition = `left ${left}px top ${top}px`;
 
     const doorRightRect = this.doorRight.getBoundingClientRect();
     const doorRightStyle = getComputedStyle(this.doorRight);
     const doorRightBorderLeft = parseFloat(doorRightStyle.getPropertyValue('border-left').split(' ')[0]);
-    this.doorRight.style.backgroundPosition = `left ${params.offset.left - doorRightRect.left - doorRightBorderLeft}px top ${params.offset.top - doorRightRect.top}px`;
+    left = params.offset.left - doorRightRect.left - doorRightBorderLeft;
+    top = params.offset.top - doorRightRect.top;
+    this.doorRight.style.backgroundPosition = `left ${left}px top ${top}px`;
 
     // Apply properties
     for (let property in params.styles) {
@@ -210,7 +221,7 @@ export default class AdventCalendarDoor {
    * @param {Event} event Event.
    */
   handleKeypress(event) {
-    if (event.keyCode === 13 || event.keyCode === 32) {
+    if (event.code === 'Space' || event.code === 'Enter') {
       // Forward to click handler, door has role="button".
       this.handleClick(event);
     }
@@ -318,7 +329,7 @@ export default class AdventCalendarDoor {
 
     // Check for date in december, keep open whole december
     const date = new Date();
-    return date.getMonth() === 11 && date.getDate() >= this.params.day;
+    return date.getMonth() === DECEMBER_NUMBER && date.getDate() >= this.params.day;
   }
 }
 

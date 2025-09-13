@@ -16,15 +16,15 @@ export default class Overlay {
       styleBase: 'h5p-advent-calendar-overlay',
       position: {
         offsetHorizontal : 0,
-        offsetVertical : 0
+        offsetVertical : 0,
       },
       a11y: {
-        closeWindow: 'Close'
-      }
+        closeWindow: 'Close',
+      },
     }, params);
 
     this.callbacks = Util.extend({
-      onClose: () => {}
+      onClose: () => {},
     }, callbacks);
 
     this.isVisible = false;
@@ -156,7 +156,9 @@ export default class Overlay {
    */
   updateFocusableElements() {
     this.focusableElements = []
-      .slice.call(this.overlay.querySelectorAll('video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .slice.call(this.overlay.querySelectorAll(
+        'video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      ))
       .filter((element) => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }
 

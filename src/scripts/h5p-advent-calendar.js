@@ -4,6 +4,36 @@ import Overlay from '@components/h5p-advent-calendar-overlay.js';
 import Spinner from '@components/h5p-advent-calendar-spinner.js';
 import Util from '@services/h5p-advent-calendar-util.js';
 
+/** @constant {number} DAY_CHRISTMAS_EVE Day of Christmas Eve. */
+const DAY_CHRISTMAS_EVE = 24;
+
+/** @constant {number} DECEMBER_NUMBER December month number. Starts at 0. */
+const DECEMBER_NUMBER = 11;
+
+/** @constant {number} NUMBER_OF_SNOWFLAKES Number of snowflakes. */
+const NUMBER_OF_SNOWFLAKES = 30;
+
+/** @constant {number} COLUMNS_IN_6X4 Number of columns in 6x4 layout. */
+const COLUMNS_IN_6X4 = 6;
+
+/** @constant {number} COLUMNS_IN_4X6 Number of columns in 4x6 layout. */
+const COLUMNS_IN_4X6 = 4;
+
+/** @constant {number} COLUMNS_IN_3X8 Number of columns in 3x8 layout. */
+const COLUMNS_IN_3X8 = 3;
+
+/** @constant {number} COLUMNS_IN_2X12 Number of columns in 2x12 layout. */
+const COLUMNS_IN_2X12 = 2;
+
+/** @constant {number} FALLBACK_FONT_SIZE_PX Fallback font size in px. */
+const FALLBACK_FONT_SIZE_PX = 16;
+
+/** @constant {number} LUCKY_SEVEN The number seven - not sure what this meant :-). */
+const LUCKY_SEVEN = 7;
+
+/** @constant {number} LUCKY_FOURTYEIGHT The number forty-eight - not sure what this meant :-). */
+const LUCKY_FOURTYEIGHT = 48;
+
 export default class AdventCalendar extends H5P.EventDispatcher {
   /**
    * @class
@@ -21,19 +51,19 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         hideNumbers: false,
         hideDoorKnobs: false,
         hideDoorFrame: false,
-        snow: false
+        snow: false,
       },
       audio: {
-        autoplay: false
+        autoplay: false,
       },
       behaviour: {
         modeDoorPlacement: 'fixed',
         doorPlacementRatio: '6x4',
         randomize: false,
-        keepImageOrder: false
+        keepImageOrder: false,
       },
       l10n: {
-        nothingToSee: 'There is nothing to see here!\ud83c\udf84'
+        nothingToSee: 'There is nothing to see here!\ud83c\udf84',
       },
       a11y: {
         door: 'Door',
@@ -41,8 +71,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         content: 'Content of @door',
         closeWindow: 'Close window',
         mute: 'Mute audio',
-        unmute: 'Unmute audio'
-      }
+        unmute: 'Unmute audio',
+      },
     }, params);
 
     this.doorsLoaded = 0;
@@ -61,14 +91,14 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     const advancedTextField = Util.findSemanticsField('text', semantics);
     const advancedTextName = advancedTextField?.options[0] ||
       'H5P.AdvancedText 1.1';
-    while (this.params.doors.length < 24) {
+    while (this.params.doors.length < DAY_CHRISTMAS_EVE) {
       this.params.doors.push({
         text: {
           library: advancedTextName,
           params: { text: this.params.l10n.nothingToSee },
-          subContentId: H5P.createUUID()
+          subContentId: H5P.createUUID(),
         },
-        type: 'text'
+        type: 'text',
       });
     }
 
@@ -78,7 +108,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     if (params.visuals?.backgroundImage?.path) {
       const source = H5P.getPath(
-        params.visuals.backgroundImage.path, contentId
+        params.visuals.backgroundImage.path, contentId,
       );
 
       if (source) {
@@ -105,7 +135,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
       return {
         day: index + 1,
-        content: door
+        content: door,
       };
     });
 
@@ -123,7 +153,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     const coverPool = this.doors.map((door) => ({
       day: door.day,
-      doorCover: door.content.doorCover
+      doorCover: door.content.doorCover,
     }));
 
     // Reassign door covers to fixed positions
@@ -134,7 +164,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       });
     }
 
-    this.instances = Array(25);
+    this.instances = Array(DAY_CHRISTMAS_EVE + 1);
 
     this.muted = !this.params.audio.autoplay;
 
@@ -176,7 +206,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
             door: this.params.a11y.door,
             locked: this.params.a11y.locked,
             content: this.params.a11y.content,
-          }
+          },
         },
         {
           onOpened: (day, delay) => {
@@ -184,8 +214,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
           },
           onLoaded: () => {
             this.handleDoorLoaded();
-          }
-        }
+          },
+        },
       );
       column.appendChild(door.door.getDOM());
 
@@ -196,7 +226,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     // Add audio button if backgroundMusic is assigned
     if (params.audio.backgroundMusic) {
       this.backgroundMusic = this.createAudio(
-        params.audio.backgroundMusic, contentId
+        params.audio.backgroundMusic, contentId,
       );
 
       this.buttonAudio = document.createElement('button');
@@ -230,7 +260,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     // Add snow effect if set
     const date = new Date();
-    if (params.visuals.snow || date.getMonth() === 11 && date.getDate() >= 24) {
+    if (params.visuals.snow || date.getMonth() === DECEMBER_NUMBER && date.getDate() >= DAY_CHRISTMAS_EVE) {
       const sky = document.createElement('div');
       sky.classList.add('h5p-advent-calendar-sky');
       this.container.appendChild(sky);
@@ -239,7 +269,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       snow.classList.add('h5p-advent-calendar-snow');
       sky.appendChild(snow);
 
-      for (let i = 0; i < 30; i++) { // 30 seems to be enough snow
+      for (let i = 0; i < NUMBER_OF_SNOWFLAKES; i++) { // 30 seems to be enough snow
         const snowFlake = document.createElement('span');
         snow.appendChild(snowFlake);
       }
@@ -249,14 +279,14 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.overlay = new Overlay(
       {
         a11y: {
-          closeWindow: this.params.a11y.closeWindow
-        }
+          closeWindow: this.params.a11y.closeWindow,
+        },
       },
       {
         onClose: () => {
           this.handleOverlayClosed();
-        }
-      }
+        },
+      },
     );
     this.container.appendChild(this.overlay.getDOM());
 
@@ -283,19 +313,19 @@ export default class AdventCalendar extends H5P.EventDispatcher {
   determineRowColumnRatio() {
     const containerWidth = (this.container.getBoundingClientRect()).width;
     const columnsFittingCount = Math.floor(
-      containerWidth / AdventCalendar.COLUMN_WIDTH_MIN
+      containerWidth / AdventCalendar.COLUMN_WIDTH_MIN,
     );
 
-    if (columnsFittingCount >= 6) {
+    if (columnsFittingCount >= COLUMNS_IN_6X4) {
       return '6x4';
     }
-    else if (columnsFittingCount >= 4) {
+    else if (columnsFittingCount >= COLUMNS_IN_4X6) {
       return '4x6';
     }
-    else if (columnsFittingCount >= 3) {
+    else if (columnsFittingCount >= COLUMNS_IN_3X8) {
       return '3x8';
     }
-    else if (columnsFittingCount >= 2) {
+    else if (columnsFittingCount >= COLUMNS_IN_2X12) {
       return '2x12';
     }
 
@@ -341,7 +371,10 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       return; // Not ready yet
     }
 
-    const scaleByHeight = (containerRect.width / containerRect.height < this.backgroundImage.naturalWidth / this.backgroundImage.naturalHeight);
+    const ratioContainer = containerRect.width / containerRect.height;
+    const ratioImage = this.backgroundImage.naturalWidth / this.backgroundImage.naturalHeight;
+    const scaleByHeight = (ratioContainer < ratioImage);
+
     const coverWidth = (scaleByHeight) ?
       this.backgroundImage.naturalWidth / this.backgroundImage.naturalHeight * containerRect.height :
       containerRect.width;
@@ -353,9 +386,9 @@ export default class AdventCalendar extends H5P.EventDispatcher {
       door.door.setDoorCover({
         image: this.backgroundImage,
         styles: {
-          'background-size': `${coverWidth}px ${coverHeight}px`
+          'background-size': `${coverWidth}px ${coverHeight}px`,
         },
-        offset: { left: containerRect.left, top: containerRect.top }
+        offset: { left: containerRect.left, top: containerRect.top },
       });
     });
   }
@@ -364,7 +397,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
    * Resize.
    */
   resize() {
-    this.table.style.fontSize = `${this.container.offsetWidth / 48}px`;
+    this.table.style.fontSize = `${this.container.offsetWidth / LUCKY_FOURTYEIGHT}px`;
 
     if (this.currentDayOpened) {
       if (this.instances[this.currentDayOpened]) {
@@ -376,18 +409,20 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         // Relative heights (100% on parents) don't work, content still overflows
         if (this.instances[this.currentDayOpened]) {
           const computedFontSize = parseInt(
-            window.getComputedStyle(this.instances[this.currentDayOpened].wrapper).fontSize
-          ) || 16;
+            window.getComputedStyle(this.instances[this.currentDayOpened].wrapper).fontSize,
+          ) || FALLBACK_FONT_SIZE_PX;
 
-          this.instances[this.currentDayOpened].wrapper.style.maxHeight = `calc(${this.h5pContainer.offsetHeight - 7 * computedFontSize}px)`;
+          this.instances[this.currentDayOpened].wrapper.style.maxHeight =
+            `calc(${this.h5pContainer.offsetHeight - LUCKY_SEVEN * computedFontSize}px)`;
 
           const instance = this.instances[this.currentDayOpened]?.instance;
           if (
             instance?.libraryInfo?.machineName === 'H5P.Image' &&
             instance.$img?.get(0)
           ) {
-            this.instances[this.currentDayOpened].wrapper.style.maxWidth =
-            (this.h5pContainer.offsetHeight - 7 * computedFontSize) / instance.$img?.get(0).offsetHeight * instance.$img?.get(0).offsetWidth + 'px';
+            const height = this.h5pContainer.offsetHeight - LUCKY_SEVEN * computedFontSize;
+            const imageDimension = instance.$img?.get(0).offsetHeight * instance.$img?.get(0).offsetWidth;
+            this.instances[this.currentDayOpened].wrapper.style.maxWidth = `${height / imageDimension}px`;
           }
         }
       }
@@ -424,7 +459,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     return this.doors.map((door) => ({
       day: door.day,
-      open: door.door.isOpen()
+      open: door.door.isOpen(),
     }));
   }
 
@@ -464,7 +499,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
           playerMode: 'full',
           fitToWrapper: false,
           controls: true,
-          autoplay: params.content.autoplay || false
+          autoplay: params.content.autoplay || false,
         }, this.contentId);
 
         instance.attach(H5P.jQuery(instanceWrapper));
@@ -494,12 +529,12 @@ export default class AdventCalendar extends H5P.EventDispatcher {
           sources: params.content.video,
           visuals: {
             fit: fit,
-            controls: true
+            controls: true,
           },
           playback: {
             autoplay: params.content.autoplay || false,
-            loop: false
-          }
+            loop: false,
+          },
         }, this.contentId, {});
 
         instance.attach(H5P.jQuery(instanceWrapper));
@@ -522,7 +557,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         instance = H5P.newRunnable(
           params.content[params.content.type],
           this.contentId,
-          H5P.jQuery(instanceWrapper)
+          H5P.jQuery(instanceWrapper),
         );
       }
 
@@ -535,7 +570,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
       this.instances[day] = {
         instance: instance,
-        wrapper: instanceWrapper
+        wrapper: instanceWrapper,
       };
     }
 
@@ -560,7 +595,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
         this.instances[day].instance.trigger('resize');
 
         // Passing autoplay alone doesn't suffice
-        if (params.content.type && params.content.autoplay && this.instances[day].instance.audio && this.instances[day].instance.audio.paused) {
+        if (params.content.type && params.content.autoplay && this.instances[day].instance.audio?.paused) {
           this.instances[day].instance.play();
         }
       }
@@ -613,7 +648,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
   handleDoorLoaded() {
     this.doorsLoaded++;
 
-    if (this.doorsLoaded === 24) {
+    if (this.doorsLoaded === DAY_CHRISTMAS_EVE) {
       this.spinner.hide();
       this.table.classList.remove('h5p-advent-calendar-display-none');
       this.trigger('resize');
@@ -641,7 +676,7 @@ export default class AdventCalendar extends H5P.EventDispatcher {
 
     return {
       player: player,
-      promise: null
+      promise: null,
     };
   }
 
