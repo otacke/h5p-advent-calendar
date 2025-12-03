@@ -412,17 +412,18 @@ export default class AdventCalendar extends H5P.EventDispatcher {
             window.getComputedStyle(this.instances[this.currentDayOpened].wrapper).fontSize,
           ) || FALLBACK_FONT_SIZE_PX;
 
-          this.instances[this.currentDayOpened].wrapper.style.maxHeight =
-            `calc(${this.h5pContainer.offsetHeight - LUCKY_SEVEN * computedFontSize}px)`;
-
           const instance = this.instances[this.currentDayOpened]?.instance;
           if (
             instance?.libraryInfo?.machineName === 'H5P.Image' &&
             instance.$img?.get(0)
           ) {
-            const height = this.h5pContainer.offsetHeight - LUCKY_SEVEN * computedFontSize;
-            const imageDimension = instance.$img?.get(0).offsetHeight * instance.$img?.get(0).offsetWidth;
-            this.instances[this.currentDayOpened].wrapper.style.maxWidth = `${height / imageDimension}px`;
+            const height = Math.min(
+              this.h5pContainer.offsetHeight - LUCKY_SEVEN * computedFontSize,
+              instance.$img.get(0).naturalHeight
+            );
+
+            this.instances[this.currentDayOpened].wrapper.style.height =
+            `${height}px`;
           }
         }
       }

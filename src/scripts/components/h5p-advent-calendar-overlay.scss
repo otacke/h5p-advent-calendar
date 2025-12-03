@@ -52,6 +52,7 @@
 
     .h5p-advent-calendar-instance-wrapper.h5p-image > img {
       margin: auto;
+      object-fit: contain;
     }
 
     .h5p-advent-calendar-instance-wrapper.h5p-audio-wrapper {
