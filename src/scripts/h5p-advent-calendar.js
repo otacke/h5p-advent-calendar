@@ -419,11 +419,11 @@ export default class AdventCalendar extends H5P.EventDispatcher {
           ) {
             const height = Math.min(
               this.h5pContainer.offsetHeight - LUCKY_SEVEN * computedFontSize,
-              instance.$img.get(0).naturalHeight
+              instance.$img.get(0).naturalHeight,
             );
 
             this.instances[this.currentDayOpened].wrapper.style.height =
-            `${height}px`;
+              `${height}px`;
           }
         }
       }
