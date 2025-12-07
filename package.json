@@ -1,6 +1,6 @@
 {
   "name": "h5p-advent-calendar",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Do something nice before X-mas!",
   "private": true,
   "scripts": {
