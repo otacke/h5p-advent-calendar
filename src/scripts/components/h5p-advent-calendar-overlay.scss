@@ -29,7 +29,7 @@
 
   .h5p-advent-calendar-overlay-content {
     align-items: center;
-    background-color: #fff;
+    background-color: var(--h5p-theme-background, #fffff);
     border-radius: 0.5em;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@
     padding: 1em;
 
     .h5p-advent-calendar-instance-wrapper.h5p-advanced-text {
-      color: #000000;
+      color: var(--h5p-theme-text-primary, #000000);
       padding: 0.2em;
     }
 
@@ -66,7 +66,7 @@
   }
 
   .h5p-advent-calendar-overlay-button-close {
-    background: #fff;
+    background: var(--h5p-theme-background);
     position: absolute;
     top: -1.1em;
     right: -1.1em;
@@ -75,13 +75,13 @@
     border: none;
     padding: 3px;
     line-height: 1;
-    color: #222;
+    color: var(--h5p-theme-text-primary, #222222);
     z-index: 3;
 
     &::after {
       font-family: "H5PFontAwesome4", sans-serif;
       content: "";
-      border: 1px solid #222;
+      border: 1px solid var(--h5p-theme-text-primary, #222222);
       text-align: center;
       border-radius: 50%;
       width: 1.5em;
@@ -109,4 +109,3 @@
     display: none;
   }
 }
-
