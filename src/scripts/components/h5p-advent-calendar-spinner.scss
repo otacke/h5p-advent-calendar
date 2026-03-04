@@ -8,10 +8,11 @@
 }
 
 .h5p-advent-calendar-spinner-container {
-  width: 100%;
+  align-items: center;
+  background: var(--h5p-theme-background);
   display: flex;
   justify-content: center;
-  align-items: center;
+  width: 100%;
 
   .h5p-advent-calendar-spinner {
     display: inline-block;
@@ -28,10 +29,10 @@
       width: 4em;
       height: 4em;
       margin: 0.5em;
-      border: 0.5em solid #999;
+      border: 0.5em solid var(--h5p-theme-main-cta-base, #999999);
       border-radius: 50%;
       animation: h5p-advent-calendar-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-      border-color: #999 transparent transparent transparent;
+      border-color: var(--h5p-theme-main-cta-base, #999999) transparent transparent transparent;
     }
 
     .h5p-advent-calendar-spinner-circle-head {
@@ -55,4 +56,3 @@
     display: none;
   }
 }
-

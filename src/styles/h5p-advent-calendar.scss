@@ -55,10 +55,10 @@
   }
 
   .h5p-advent-calendar-audio-button {
-    background: #000000;
+    background: var(--h5p-theme-main-cta-base, #000000);
     border: 0.15em solid transparent;
     border-radius: 50%;
-    color: #ffffff;
+    color: var(--h5p-theme-contrast-cta, #ffffff);
     cursor: pointer;
     display: block;
     font-size: 1em;
@@ -73,15 +73,15 @@
     z-index: 4;
 
     &:active {
-      border-color: #6d6d6d;
+      border-color: var(--h5p-theme-focus, #6d6d6d);
     }
 
     &:focus {
-      background-color: #2b2b2b;
+      background-color: var(--h5p-theme-main-cta-light, #2b2b2b);
     }
 
     &:hover {
-      background-color: #2b2b2b;
+      background-color: var(--h5p-theme-main-cta-light, #2b2b2b);
     }
 
     &::before {

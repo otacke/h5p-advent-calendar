@@ -16,10 +16,10 @@
 
   .h5p-advent-calendar-preview-image {
     align-items: center;
-    background-color: #ffffff;
+    background-color: var(--h5p-theme-background);
     background-size: cover;
     border: 0;
-    color: #cccccc;
+    color: hsl(from var(--h5p-theme-main-cta-base) h s l / 0.75);
     cursor: pointer;
     display: flex;
     flex-direction: column;
