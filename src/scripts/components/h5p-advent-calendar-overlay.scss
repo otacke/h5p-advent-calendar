@@ -41,6 +41,7 @@
     padding: 1em;
 
     .h5p-advent-calendar-instance-wrapper.h5p-advanced-text {
+      font-size: var(--h5p-theme-font-size-m, 16px);
       color: var(--h5p-theme-text-primary, #000000);
       padding: 0.2em;
     }
