@@ -11,6 +11,8 @@ class Spinner {
 
     this.container = document.createElement('div');
     this.container.classList.add(`${this.classNameBase}-container`);
+    this.container.setAttribute('role', 'status');
+    this.container.setAttribute('aria-label', 'Loading...');
 
     this.spinnerElement = document.createElement('div');
     this.spinnerElement.classList.add(classNameBase);

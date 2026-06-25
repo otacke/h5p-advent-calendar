@@ -18,6 +18,9 @@ export default class AdventCalendarDoor {
       onLoaded: () => {},
     }, callbacks);
 
+    this.handleClick = this.handleClick.bind(this);
+    this.handleKeydown = this.handleKeydown.bind(this);
+
     this.opened = false;
     this.toLoad = ['door', 'previewImage'];
 
@@ -45,12 +48,8 @@ export default class AdventCalendarDoor {
     if (!this.canBeOpened()) {
       this.container.classList.add('h5p-advent-calendar-disabled');
     }
-    this.container.addEventListener('click', (event) => {
-      this.handleClick(event);
-    });
-    this.container.addEventListener('keypress', (event) => {
-      this.handleKeypress(event);
-    });
+    this.container.addEventListener('click', this.handleClick);
+    this.container.addEventListener('keydown', this.handleKeydown);
 
     // Door container
     const doorContainer = document.createElement('div');
@@ -220,8 +219,8 @@ export default class AdventCalendarDoor {
    * Handle open event by space/enter.
    * @param {Event} event Event.
    */
-  handleKeypress(event) {
-    if (event.code === 'Space' || event.code === 'Enter') {
+  handleKeydown(event) {
+    if (event.key === ' ' || event.key === 'Enter') {
       // Forward to click handler, door has role="button".
       this.handleClick(event);
     }
@@ -240,12 +239,8 @@ export default class AdventCalendarDoor {
 
     this.open();
 
-    this.container.removeEventListener('click', (event) => {
-      this.handleClick(event);
-    });
-    this.container.removeEventListener('keypress', (event) => {
-      this.handleKeypress(event);
-    });
+    this.container.removeEventListener('click', this.handleClick);
+    this.container.removeEventListener('keydown', this.handleKeydown);
   }
 
   /**

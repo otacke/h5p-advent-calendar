@@ -61,6 +61,13 @@ export default class Overlay {
       this.trapFocus(event);
     }, true);
 
+    // Close on Escape key
+    document.addEventListener('keydown', (event) => {
+      if (this.isVisible && (event.key === 'Escape' || event.key === 'Esc')) {
+        this.callbacks.onClose();
+      }
+    });
+
     // Blocker
     this.blocker = document.createElement('div');
     this.blocker.classList.add('h5p-advent-calendar-overlay-blocker');
