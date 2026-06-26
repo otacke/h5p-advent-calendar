@@ -41,6 +41,7 @@ export default class Overlay {
 
     this.content = document.createElement('div');
     this.content.classList.add(`${this.params.styleBase}-content`);
+    this.content.setAttribute('tabindex', '0');
     this.content.appendChild(this.params.content);
     this.overlay.appendChild(this.content);
 
@@ -164,7 +165,7 @@ export default class Overlay {
   updateFocusableElements() {
     this.focusableElements = []
       .slice.call(this.overlay.querySelectorAll(
-        'video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        'video, audio, button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])',
       ))
       .filter((element) => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }
