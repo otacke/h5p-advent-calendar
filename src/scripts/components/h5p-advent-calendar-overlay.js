@@ -185,7 +185,7 @@ export default class Overlay {
       this.updateFocusableElements(); // Won't find YouTube elements in iframe
 
       const focusableInContent = this.focusableElements.filter(
-        (element) => this.content.contains(element)
+        (element) => this.content.contains(element),
       );
 
       if (focusableInContent.length === 0) {
