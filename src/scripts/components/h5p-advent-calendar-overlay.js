@@ -41,7 +41,6 @@ export default class Overlay {
 
     this.content = document.createElement('div');
     this.content.classList.add(`${this.params.styleBase}-content`);
-    this.content.setAttribute('tabindex', '0');
     this.content.appendChild(this.params.content);
     this.overlay.appendChild(this.content);
 
@@ -62,7 +61,6 @@ export default class Overlay {
       this.trapFocus(event);
     }, true);
 
-    // Close on Escape key
     document.addEventListener('keydown', (event) => {
       if (this.isVisible && (event.key === 'Escape' || event.key === 'Esc')) {
         this.callbacks.onClose();
@@ -185,6 +183,20 @@ export default class Overlay {
 
     setTimeout(() => {
       this.updateFocusableElements(); // Won't find YouTube elements in iframe
+
+      const focusableInContent = this.focusableElements.filter(
+        (element) => this.content.contains(element)
+      );
+
+      if (focusableInContent.length === 0) {
+        this.content.setAttribute('tabindex', '0');
+        this.updateFocusableElements();
+
+        this.content.addEventListener('blur', () => {
+          this.content.removeAttribute('tabindex');
+          this.updateFocusableElements();
+        }, { once: true });
+      }
 
       if (this.focusableElements.length > 0) {
         this.focusableElements[0].focus();

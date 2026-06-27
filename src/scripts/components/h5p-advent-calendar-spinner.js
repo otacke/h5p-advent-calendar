@@ -5,14 +5,20 @@ class Spinner {
   /**
    * Constructor.
    * @param {string} classNameBase Class name base to define spinner visuals.
+   * @param {object} [params]
+   * @param {object} [params.a11y]
+   * @param {string} [params.a11y.loading]
    */
-  constructor(classNameBase) {
+  constructor(classNameBase, params = {}) {
     this.classNameBase = classNameBase;
+    this.params = params || {};
+    this.params.a11y = this.params.a11y || {};
+    this.params.a11y.loading = this.params.a11y.loading || 'Loading...';
 
     this.container = document.createElement('div');
     this.container.classList.add(`${this.classNameBase}-container`);
     this.container.setAttribute('role', 'status');
-    this.container.setAttribute('aria-label', 'Loading...');
+    this.container.setAttribute('aria-label', this.params.a11y.loading);
 
     this.spinnerElement = document.createElement('div');
     this.spinnerElement.classList.add(classNameBase);

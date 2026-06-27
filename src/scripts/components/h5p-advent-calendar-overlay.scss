@@ -35,9 +35,11 @@
     border-radius: 0.5em;
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
     min-height: 0;
-    justify-content: center;
+    justify-content: flex-start;
     overflow-x: hidden;
     overflow-y: auto;
     padding: 1em;
