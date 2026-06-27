@@ -434,6 +434,13 @@
         "label": "Close window",
         "importance": "low",
         "default": "Close window"
+      },
+      {
+        "name": "loading",
+        "type": "text",
+        "label": "Loading",
+        "importance": "low",
+        "default": "Loading..."
       }
     ]
   }

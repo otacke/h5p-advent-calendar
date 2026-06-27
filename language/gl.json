@@ -196,6 +196,10 @@
         {
           "label": "Pechar xanela",
           "default": "Pechar xanela"
+        },
+        {
+          "label": "Loading",
+          "default": "Loading..."
         }
       ]
     }
