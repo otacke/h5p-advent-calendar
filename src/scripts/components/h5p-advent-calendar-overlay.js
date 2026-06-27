@@ -189,11 +189,13 @@ export default class Overlay {
       );
 
       if (focusableInContent.length === 0) {
-        this.content.setAttribute('tabindex', '0');
+        const firstChild = this.content.querySelector('.h5p-advent-calendar-instance-wrapper')?.firstChild;
+
+        firstChild?.setAttribute('tabindex', '0');
         this.updateFocusableElements();
 
-        this.content.addEventListener('blur', () => {
-          this.content.removeAttribute('tabindex');
+        firstChild?.addEventListener('blur', () => {
+          firstChild.removeAttribute('tabindex');
           this.updateFocusableElements();
         }, { once: true });
       }
