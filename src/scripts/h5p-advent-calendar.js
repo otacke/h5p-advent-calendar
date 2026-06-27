@@ -174,7 +174,8 @@ export default class AdventCalendar extends H5P.EventDispatcher {
     this.container.classList.add('h5p-advent-calendar-container');
 
     // Spinner to indicate loading
-    this.spinner = new Spinner('h5p-advent-calendar-spinner', {
+    this.spinner = new Spinner({
+      classNameBase: 'h5p-advent-calendar-spinner',
       a11y: {
         loading: this.params.a11y.loading,
       },
