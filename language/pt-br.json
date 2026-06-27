@@ -1,0 +1,207 @@
+{
+  "semantics": [
+    {
+      "label": "Modo para imagens das portas",
+      "description": "Selecione se deseja definir cada imagem personalizada das portas manualmente ou se prefere que o H5P faça o trabalho para você com base na imagem de fundo do calendário definida nas configurações de comportamento.",
+      "options": [
+        {
+          "label": "Quero definir cada imagem de porta manualmente"
+        },
+        {
+          "label": "O H5P deve definir as imagens das portas com base na imagem de fundo"
+        }
+      ]
+    },
+    {
+      "label": "Portas",
+      "entity": "porta",
+      "field": {
+        "fields": [
+          {
+            "label": "Tipo de conteúdo",
+            "description": "Tipo de conteúdo que deve opcionalmente aparecer quando a porta for aberta.",
+            "options": [
+              {
+                "label": "Áudio"
+              },
+              {
+                "label": "Imagem"
+              },
+              {
+                "label": "Link"
+              },
+              {
+                "label": "Texto"
+              },
+              {
+                "label": "Vídeo"
+              }
+            ]
+          },
+          {
+            "label": "Áudio"
+          },
+          {
+            "label": "Imagem"
+          },
+          {
+            "label": "Link"
+          },
+          {
+            "label": "Texto"
+          },
+          {
+            "label": "Vídeo"
+          },
+          {
+            "label": "Reprodução automática"
+          },
+          {
+            "label": "Imagem da porta",
+            "description": "Imagem que será usada para a porta. Precisa ter uma proporção de 1:1 se você quiser que a metade esquerda se ajuste à metade direita."
+          },
+          {
+            "label": "Imagem de fundo",
+            "description": "Imagem que deve aparecer dentro da porta. Por padrão, será o número da porta."
+          }
+        ]
+      },
+      "widgets": [
+        {
+          "label": "Padrão"
+        }
+      ]
+    },
+    {
+      "label": "Configurações visuais",
+      "description": "Essas opções permitem configurar a aparência visual.",
+      "fields": [
+        {
+          "label": "Imagem de fundo do calendário"
+        },
+        {
+          "label": "Modelo de imagem da porta",
+          "description": "Se uma imagem for definida, ela será usada para todas as portas, a menos que uma imagem específica seja definida para uma única porta."
+        },
+        {
+          "label": "Ocultar borda da porta"
+        },
+        {
+          "label": "Ocultar números da porta"
+        },
+        {
+          "label": "Ocultar maçanetas da porta"
+        },
+        {
+          "label": "Ocultar moldura da porta"
+        },
+        {
+          "label": "Deixe nevar",
+          "description": "Adicionará um efeito de neve caindo na frente do calendário. Nunca chove no sul da Califórnia, nunca neva no IE11."
+        }
+      ]
+    },
+    {
+      "label": "Configurações de áudio",
+      "description": "Essas opções permitem configurar os elementos de áudio.",
+      "fields": [
+        {
+          "label": "Música de fundo"
+        },
+        {
+          "label": "Reprodução automática da música de fundo",
+          "description": "Se definido, a música de fundo tocará automaticamente assim que o conteúdo for aberto. Observação: as políticas de mídia de alguns navegadores podem impedir a reprodução automática."
+        }
+      ]
+    },
+    {
+      "label": "Configurações de comportamento",
+      "description": "Essas opções permitem sobrepor as configurações de comportamento padrão.",
+      "fields": [
+        {
+          "label": "Modo de posicionamento das portas",
+          "description": "Selecione se deseja definir um número fixo de colunas e linhas para as portas ou se o H5P deve decidir dinamicamente dependendo do espaço disponível. Observe que a última opção pode interferir na posição da imagem de fundo e das imagens de capa personalizadas que deveriam estar em uma posição específica.",
+          "options": [
+            {
+              "label": "Fixo"
+            },
+            {
+              "label": "Dinâmico"
+            }
+          ]
+        },
+        {
+          "label": "Proporção de linhas para colunas",
+          "description": "Selecione quantas colunas e linhas o calendário deve usar.",
+          "options": [
+            {
+              "label": "6 × 4"
+            },
+            {
+              "label": "4 × 6"
+            }
+          ]
+        },
+        {
+          "label": "Ordem aleatória",
+          "description": "Embaralha a ordem das portas. Se a opção \"salvar estado do conteúdo\" estiver ativada nas configurações do H5P, essa ordem permanecerá a mesma quando o usuário retornar mais tarde."
+        },
+        {
+          "label": "Manter a ordem das imagens",
+          "description": "Embaralha as portas, mas mantém as imagens de capa das portas em suas posições fixas, começando com a 1 no canto superior esquerdo até a 24 no canto inferior direito."
+        },
+        {
+          "label": "Modo de edição/design",
+          "description": "No modo de design, todas as portas podem ser abertas. Caso contrário, as portas só poderão ser abertas em dezembro, a partir do respectivo dia indicado no número da porta."
+        }
+      ]
+    },
+    {
+      "label": "Localização",
+      "fields": [
+        {
+          "label": "Nada para ver",
+          "default": "Não há nada para ver aqui!\ud83c\udf84"
+        },
+        {
+          "label": "Fictício (Dummy)",
+          "default": "Fictício"
+        }
+      ]
+    },
+    {
+      "label": "Acessibilidade",
+      "fields": [
+        {
+          "label": "Porta",
+          "default": "Porta"
+        },
+        {
+          "label": "Bloqueada",
+          "default": "Bloqueada. Ainda não está na hora de abrir esta porta."
+        },
+        {
+          "description": "Anuncia o conteúdo. @door é uma variável e será substituída pela descrição da porta relacionada.",
+          "label": "Conteúdo de",
+          "default": "Conteúdo da @door"
+        },
+        {
+          "label": "Mudar para mudo",
+          "default": "Desativar som"
+        },
+        {
+          "label": "Ativar som",
+          "default": "Ativar som"
+        },
+        {
+          "label": "Fechar janela",
+          "default": "Fechar janela"
+        },
+        {
+          "label": "Carregando",
+          "default": "Carregando..."
+        }
+      ]
+    }
+  ]
+}
