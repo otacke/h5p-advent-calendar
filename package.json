@@ -21,7 +21,6 @@
   "type": "module",
   "devDependencies": {
     "@babel/core": "^8.0.1",
-    "@babel/plugin-transform-destructuring": "^8.0.1",
     "@babel/preset-env": "^8.0.2",
     "babel-loader": "^10.1.1",
     "cross-env": "^10.1.0",
