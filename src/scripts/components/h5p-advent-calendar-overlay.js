@@ -61,6 +61,12 @@ export default class Overlay {
       this.trapFocus(event);
     }, true);
 
+    document.addEventListener('keydown', (event) => {
+      if (this.isVisible && (event.key === 'Escape' || event.key === 'Esc')) {
+        this.callbacks.onClose();
+      }
+    });
+
     // Blocker
     this.blocker = document.createElement('div');
     this.blocker.classList.add('h5p-advent-calendar-overlay-blocker');
@@ -157,7 +163,7 @@ export default class Overlay {
   updateFocusableElements() {
     this.focusableElements = []
       .slice.call(this.overlay.querySelectorAll(
-        'video, audio, button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        'video, audio, button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])',
       ))
       .filter((element) => element.getAttribute('disabled') !== 'true' && element.getAttribute('disabled') !== true);
   }
@@ -177,6 +183,22 @@ export default class Overlay {
 
     setTimeout(() => {
       this.updateFocusableElements(); // Won't find YouTube elements in iframe
+
+      const focusableInContent = this.focusableElements.filter(
+        (element) => this.content.contains(element),
+      );
+
+      if (focusableInContent.length === 0) {
+        const firstChild = this.content.querySelector('.h5p-advent-calendar-instance-wrapper')?.firstChild;
+
+        firstChild?.setAttribute('tabindex', '0');
+        this.updateFocusableElements();
+
+        firstChild?.addEventListener('blur', () => {
+          firstChild.removeAttribute('tabindex');
+          this.updateFocusableElements();
+        }, { once: true });
+      }
 
       if (this.focusableElements.length > 0) {
         this.focusableElements[0].focus();

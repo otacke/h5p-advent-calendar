@@ -196,6 +196,10 @@
         {
           "label": "Cerrar ventana",
           "default": "Cerrar ventana"
+        },
+        {
+          "label": "Loading",
+          "default": "Loading..."
         }
       ]
     }

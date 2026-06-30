@@ -1,19 +1,28 @@
+import Util from '@services/h5p-advent-calendar-util.js';
 import './h5p-advent-calendar-spinner.scss';
 
 /** Class for an activity indicator aka spinner */
 class Spinner {
   /**
    * Constructor.
-   * @param {string} classNameBase Class name base to define spinner visuals.
+   * @param {object} [params] Parameters.
+   * @param {string} [params.classNameBase] Class name base to define spinner visuals.
+   * @param {object} [params.a11y] Accessibility strings.
    */
-  constructor(classNameBase) {
-    this.classNameBase = classNameBase;
+  constructor(params = {}) {
+    this.params = Util.extend({
+      loading: 'Loading...',
+    }, params);
+
+    this.classNameBase = this.params.classNameBase;
 
     this.container = document.createElement('div');
     this.container.classList.add(`${this.classNameBase}-container`);
+    this.container.setAttribute('role', 'status');
+    this.container.setAttribute('aria-label', this.params.a11y.loading);
 
     this.spinnerElement = document.createElement('div');
-    this.spinnerElement.classList.add(classNameBase);
+    this.spinnerElement.classList.add(this.classNameBase);
 
     // Circle parts with different delays for the grow/shrink animation
     const circleHead = document.createElement('div');

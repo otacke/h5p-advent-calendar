@@ -196,6 +196,10 @@
         {
           "label": "Κλείσιμο παραθύρου",
           "default": "Κλείσιμο παραθύρου"
+        },
+        {
+          "label": "Loading",
+          "default": "Loading..."
         }
       ]
     }
